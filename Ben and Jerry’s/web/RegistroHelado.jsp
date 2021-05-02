@@ -41,10 +41,16 @@
     
     
         try{
-            //Consigo los id foranes de Clasificacion
+            //Consigo los id foraneas de Clasificacion
+            System.out.println("Antes de sacar el id_tipoHela");
+            System.out.println(nom_tipoHela+" "+ tamaño+ " "+ nom_pres + " " + prec_hela);
+            
             id_tipoHela = sql.buscarIdTipoHeladoBD(nom_tipoHela);
+            
             id_cant = sql.buscarIdCantidadBD(tamaño);
+            
             id_pres = sql.buscarIdPresentacionoBD(nom_pres);
+            
             System.out.println(id_tipoHela);
             System.out.println(id_cant);
             System.out.println(id_pres);
