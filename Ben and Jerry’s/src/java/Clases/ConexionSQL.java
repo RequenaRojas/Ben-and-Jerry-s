@@ -111,6 +111,52 @@ public class ConexionSQL {
         
     }
     
+    public void agregarTipoDHeladoBD(String nom_tipoHela)
+    throws ServletException, IOException, SQLException{
+        
+        if (this.buscarIdTipoHeladoBD(nom_tipoHela) == 0){
+            String q = "insert into tipoHelado (nom_tipoHela) values ('"+nom_tipoHela+"') ";
+            set.executeUpdate(q);
+        }else{
+            System.out.println("Ya existe este Tipo de Helado");
+       }
+    }
+    
+    public void agregarCantidadBD(String nom_cant, float gramos)
+    throws ServletException, IOException, SQLException{
+        
+        if (this.buscarIdTipoHeladoBD(nom_cant) == 0){
+            String q = "insert into Cantidad (nom_cant , gramos) values ('"+nom_cant+"', "+gramos+") ";
+            set.executeUpdate(q);
+        }else{
+            System.out.println("Ya existe esta Cantidad");
+       }
+    }
+    
+    public void agregarPresentacionBD(String nom_pres)
+    throws ServletException, IOException, SQLException{
+        
+        if (this.buscarIdTipoHeladoBD(nom_pres) == 0){
+            String q = "insert into Presentacion (nom_pres) values ('"+nom_pres+"') ";
+            set.executeUpdate(q);
+        }else{
+            System.out.println("Ya existe esta Presentacion");
+       }
+    }
+    
+    public void agregarClasificacionBD(int id_tipoHela, int id_cant, int id_pres)
+    throws ServletException, IOException, SQLException{
+        
+        if (this.buscarIdClasificacionBD(id_tipoHela, id_cant, id_pres) == 0){
+            String q = "insert into Clasificacion (id_tipoHela, id_cant, id_pres) values ("+id_tipoHela+", "+id_cant+", "+id_pres+") ";
+            set.executeUpdate(q);
+        }else{
+            System.out.println("Ya existe esta Presentacion");
+       }
+    }
+    
+    
+    
     //Si el dato no existe en la BD entonces retornara un 0
     public int buscarIDTelefonoBD(String telefono)
     throws ServletException, IOException, SQLException{
@@ -217,6 +263,85 @@ public class ConexionSQL {
         return usu;
     }
     
+    public int buscarIdTipoHeladoBD(String nom_tipoHela )
+    throws ServletException, IOException, SQLException{
+        String g = "SELECT * FROM TipoHelado";
+
+        set = con.createStatement();
+        rs = set.executeQuery(g);
+
+        
+        int id_tipoHela = 0;
+        while(rs.next()){
+                if(nom_tipoHela.equalsIgnoreCase(rs.getString("nom_tipoHela")) == true){
+                        id_tipoHela = rs.getInt("id_tipoHela");
+                        return id_tipoHela;
+                }
+                
+        }
+        return id_tipoHela;
+        
+    }
+    
+    public int buscarIdCantidadBD(String nom_cant )
+    throws ServletException, IOException, SQLException{
+        String g = "SELECT * FROM Cantidad";
+
+        set = con.createStatement();
+        rs = set.executeQuery(g);
+
+        
+        int id_cant = 0;
+        while(rs.next()){
+                if(nom_cant.equalsIgnoreCase(rs.getString("nom_cant")) == true){
+                        id_cant = rs.getInt("id_cant");
+                        return id_cant;
+                }
+                
+        }
+        return id_cant;
+        
+    }
+    
+    public int buscarIdPresentacionoBD(String nom_pres )
+    throws ServletException, IOException, SQLException{
+        String g = "SELECT * FROM Presentacion";
+
+        set = con.createStatement();
+        rs = set.executeQuery(g);
+
+        
+        int id_pres = 0;
+        while(rs.next()){
+                if(nom_pres.equalsIgnoreCase(rs.getString("nom_pres")) == true){
+                        id_pres = rs.getInt("id_pres");
+                        return id_pres;
+                }
+                
+        }
+        return id_pres;
+        
+    }
+    
+    public int buscarIdClasificacionBD(int id_tipoHela, int id_cant, int id_pres)
+    throws ServletException, IOException, SQLException{
+         String g = "SELECT * FROM Clasificacion";
+
+        set = con.createStatement();
+        rs = set.executeQuery(g);
+
+        
+        int id_clas = 0;
+        while(rs.next()){
+            if(id_tipoHela == rs.getInt("id_tipoHela") && id_cant == rs.getInt("id_cant") && id_pres == rs.getInt("id_pres")){
+                id_clas = rs.getInt("id_clas");
+                return id_clas;
+            }
+        }
+        
+        return id_clas;
+    }
+    
     
     //Editar Datos de una fila
     public void editarUsuario(int id_usu, Usuario usu)
@@ -228,19 +353,10 @@ public class ConexionSQL {
         
         set.executeUpdate(p);
         
-        
-        
-        
-        
-        String q = "update Usuario set nom_usu='"+usu.nom_usu+"', apelPat_usu='"+usu.getApelPat_usu()+"', apelMat_usu='"+usu.getApelMat_usu()+"'"
+         String q = "update Usuario set nom_usu='"+usu.nom_usu+"', apelPat_usu='"+usu.getApelPat_usu()+"', apelMat_usu='"+usu.getApelMat_usu()+"'"
                         + ", fechNaci_usu='"+usu.getfechNaci_usu()+"', domi_usu='"+usu.getDomi_usu()+"' where id_usu = "+id_usu+"  ";
         
         set.executeUpdate(q);
-        
-        
-        
-        
-        
     }
    
     
