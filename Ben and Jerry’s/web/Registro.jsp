@@ -59,9 +59,9 @@
             
             usu.Usuario(nom_usu, apelPat_usu, apelMat_usu, fechNaci_usu, domi_usu, telePart, teleCelu);
 
-            sql.agregarUsuarioBD(usu);
             
-            if(sql.buscarIdUsuarioBD(nom_usu, apelPat_usu, apelMat_usu)== 0){
+            
+            if(sql.buscarIdUsuarioBD(nom_usu, apelPat_usu, apelMat_usu) != 0){
 %>
                 <h1>Ya existe este Usuario con Nombre, Apellidos Paterno y Materno que acabás de escribir</h1>
 
@@ -70,6 +70,8 @@
               
                 
             }else{
+          
+                sql.agregarUsuarioBD(usu);
 %>
                 <h1>Usuario Registrado con exito awa</h1>
 
@@ -88,6 +90,9 @@
                 <br>
                 <br>
                 <label>Telefono Celular: <%=usu.getTeleCelu()%></label>
+                <br>
+                <br>
+                <label>Tu id de Usuario: <%= sql.buscarIdUsuarioBD(usu.getNom(), usu.getApelPat_usu(), usu.getApelMat_usu()) %></label>
 
 
 
