@@ -14,21 +14,30 @@ body{
 /*HEADER*/
 
 header{
-    background: rgb(160, 216, 250);
-    height: 80px;
-    width: 100%;
+  position:sticky;
+  z-index: 100;
+  top:0;
+  left:0;
+  align-items: center;
+  background: rgb(160, 216, 250);
+  height: 80px;
+  width: 100%;
+  display:flex;
+  flex-wrap: wrap;
+  align-items: center;
+  flex-direction:column;
+  justify-content: center;
 }
 
-label.logo{
+h2.logo{
     color: rgb(255, 255, 255);
-    line-height: 80px;
-    padding: 0 100px;
     text-shadow: 2px 2px 2px black;
-    font-size: 2rem;
+    font-size: 30px;
     font-weight: 900;
     text-transform: uppercase;
     letter-spacing: 0.3px;
     margin:20px;
+    text-align: center;
 }
 
 header ul{
@@ -42,7 +51,7 @@ header ul li{
     margin: 0 5px;
 }
 
-header ul li a{
+header ul li .Header,.active{
     color: rgb(255, 255, 255);
     font-size: 17px;
     padding: 7px 13px;
@@ -50,7 +59,7 @@ header ul li a{
     text-transform: uppercase;
 }
 
-a.active,a:hover{
+a.active,.Header:hover{
     background: rgb(135, 195, 235);
     transition: .5s;
 }
@@ -98,12 +107,12 @@ a.active,a:hover{
       margin: 50px 0;
       line-height: 30px;
     }
-    header ul li a{
+    header ul li a.Header{
       font-size: 20px;
     }
     a:hover,a.active{
       background: none;
-      color: rgb(135, 195, 235);
+      color: rgb(85, 85, 85);
     }
     #check:checked ~ ul{
       left: 0;
@@ -123,6 +132,93 @@ a.active,a:hover{
   max-width: 1000px;
 }
 
+.div-promoUno{
+  display:flex;
+  align-items:center;
+  text-align: center;
+  background-image: url("https://image.freepik.com/free-vector/ice-cream-set_74855-975.jpg");
+  width:656px;
+  height:232px;
+  border:15px solid rgb(250, 160, 240);
+  margin-top: 40px;
+  margin-left: 40px;
+  margin-right: 40px;
+}
+
+.div-promoDos{
+  display:flex;
+  align-items:center;
+  text-align: center;
+  background-image: url("https://image.freepik.com/free-photo/ice-cream-with-mixed-fruit_1339-4925.jpg");
+  width:656px;
+  height:232px;
+  border:15px solid rgb(250, 230, 160);;
+  margin-top: 40px;
+  margin-left: 40px;
+  margin-right: 40px;
+}
+
+.div-promoTres{
+  display:flex;
+  align-items:center;
+  text-align: center;
+  background-image: url("https://image.freepik.com/free-photo/various-ice-cream-flavor-ball-isolate-white-background_35641-3052.jpg");
+  width:656px;
+  height:232px;
+  border:15px solid rgb(180, 250, 160);
+  margin-top: 40px;
+  margin-left: 40px;
+  margin-right: 40px;
+  margin-bottom: 40px;
+}
+
+p.PromoUno{
+  margin: auto;
+  color: rgb(250, 160, 240);
+  text-shadow: 2px 2px 2px black;
+  font-size: 1.3rem;
+  font-weight: 900;
+  text-transform: uppercase;
+  letter-spacing: 0.3px;
+}
+
+p.PromoDos{
+  margin: auto;
+  color: rgb(250, 230, 160);
+  text-shadow: 2px 2px 2px black;
+  font-size: 1.3rem;
+  font-weight: 900;
+  text-transform: uppercase;
+  letter-spacing: 0.3px;
+}
+
+p.PromoTres{
+  margin: auto;
+  color: rgb(180, 250, 160);
+  text-shadow: 2px 2px 2px black;
+  font-size: 1.3rem;
+  font-weight: 900;
+  text-transform: uppercase;
+  letter-spacing: 0.3px;
+}
+
+.div-promoUno:hover{
+  border: 15px solid rgb(255, 113, 238);
+  transition: .5s;
+}
+.div-promoDos:hover{
+  border: 15px solid rgb(255, 224, 113);
+  transition: .5s;
+}
+.div-promoTres:hover{
+  border: 15px solid rgb(142, 255, 111);
+  transition: .5s;
+}
+
+a.linkPromo{
+  text-decoration: none;
+}
+
 h2{
   color: rgb(160, 216, 250);
   text-shadow: 2px 2px 2px black;
@@ -130,13 +226,28 @@ h2{
   font-weight: 900;
   text-transform: uppercase;
   letter-spacing: 0.3px;
-  margin:20px;
+  margin-top:40px;
+  margin-left: 40px;
+  margin-right: 40px;
+}
+
+p.texto{
+  color: rgb(85, 85, 85);
+  font-size:20px;
+}
+
+a.link{
+  text-decoration: none;
+  color: rgb(135, 195, 235);
+  font-size: 20px;
 }
 
 /*FORMULARIO*/
 
 .div-form{
-  margin-bottom:20px;
+  margin-left: 40px;
+  margin-right: 40px;
+  margin-bottom:40px;
 }
 
 input.botón{
@@ -148,6 +259,7 @@ input.botón{
   text-transform: uppercase;
   border:none;
   cursor:pointer;
+  flex-wrap: wrap;
 }
 
 input.botón:hover{

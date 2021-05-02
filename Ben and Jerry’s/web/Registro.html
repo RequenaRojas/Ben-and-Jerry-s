@@ -4,7 +4,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Registro</title>
     <link rel="stylesheet" href="./css/estilo.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
   </head>
   <body>
     <header>
@@ -12,21 +12,20 @@
         <label for="check" class="checkbtn">
             <i class="fas fa-bars"></i>
         </label>
-        <label class="logo">
+        <h2 class="logo">
             Benito y Gerardo
-        </label>
+        </h2>
     <ul>
-        <li><a href="index.html">Inicio</a></li>
+        <li><a class="Header" href="index.html">Inicio</a></li>
         <li><a class="active" href="Registro.html">Regístrate</a></li>
-        <li><a href="#">Ofertas</a></li>
-        <li><a href="#">Tienda</a></li>
-        <li><a href="#">Sobre nosotros</a></li>
+        <li><a class="Header" href="Tienda.html">Tienda</a></li>
+        <li><a class="Header" href="#">Sobre nosotros</a></li>
     </ul>
     </header>
     <section class="contenedorPrincipal">
         <div class="div-form">
-            <h2 style="text-align: left;">Por favor, ingrese sus datos:</h2>
             <form  onsubmit="" name="formUsu" method="post" action="Registro.jsp" >  
+                <h2 style="text-align: left;">Por favor, ingrese sus datos:</h2>
                 <br><br>
                 <label class="nomCam">Nombre:</label>
                 <br>
@@ -58,15 +57,18 @@
                 <br>
                 <br>
                 <input class="botón" type="submit" value="Enviar Datos de Registro">
-                <input class="botón" type="reset" value="Borrar Registro" style="margin-left:20px;">
+                <br><br>
+                <input class="botón" type="reset" value="Borrar Registro">
             </form>
         </div>   
     </section>
     <footer>
         <p>
+        <br>
             Integrantes del equipo:
         <br><br>
             - Fernández García Gael - Morales de los Santos Jaime Emmanuel - Requena Rojas Moisés Sófocles -
+        <br><br>
         </p>
     </footer>
   </body>
