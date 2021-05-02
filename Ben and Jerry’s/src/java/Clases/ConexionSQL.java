@@ -61,22 +61,35 @@ public class ConexionSQL {
     
     public void agregarUsuarioBD(Usuario usu)
     throws ServletException, IOException, SQLException{
-         
-         String p = "insert into Usuario (nom_usu, apelPat_usu, apelMat_usu, fechNaci_usu, domi_usu,id_teleCelu )"
-                    + "values ('"+nom_usu+"','"+apelPat_usu+"','"+apelMat_usu+"', '"+fechNaci_usu+"','"+domi_usu+"', "+id_tele+" )";
-
-        set.executeUpdate(p);
         
+        if(this.buscarIdUsuarioBD(usu.getNom(), usu.getApelPat_usu(), usu.getApelMat_usu()) != 0 ){
+        }else{
+        
+            String p = "insert into Usuario (nom_usu, apelPat_usu, apelMat_usu, fechNaci_usu, domi_usu,id_tele )"
+                    + "values ('"+usu.getNom()+"','"+usu.getApelPat_usu()+"','"+usu.getApelMat_usu()+"', '"
+                     +usu.getfechNaci_usu()+"','"+usu.getDomi_usu()+"', "+ this.buscarIDTelefonoBD(usu.getTeleCelu())+")";
+
+            set.executeUpdate(p);
+        }
     }
     
-    public int agregarTelefonoBD(String telePart_usu, String teleCelu_usu)
+    
+    private void agregarTelefonoBD(String telePart_usu, String teleCelu_usu)
     throws ServletException, IOException, SQLException{
-         
-        String q = "insert into telefono (telePart,teleCelu) values ('"+telePart_usu+"', '"+teleCelu_usu+"')";
+        
+        if (this.buscarIDTelefonoBD(teleCelu_usu) != 0 | this.buscarIDTelefonoBD(telePart_usu) != 0){
+            System.out.println("Ya existe este numero");
+        }else{
+            String q = "insert into telefono (telePart,teleCelu) values ('"+telePart_usu+"', '"+teleCelu_usu+"')";
 
-        set.executeUpdate(q);
-
-        String g = "SELECT '"+telePart_usu+"' FROM telefono";
+            set.executeUpdate(q);
+       }
+    }
+    
+    //Si el numero ya existe entonces retornara un 0
+    public int buscarIDTelefonoBD(String telefono)
+    throws ServletException, IOException, SQLException{
+        String g = "SELECT * FROM telefono";
 
         set = con.createStatement();
         rs = set.executeQuery(g);
@@ -84,31 +97,36 @@ public class ConexionSQL {
         //Consigo el id de la tabla telefono, si no exite entonces regresará un 0
         int id_tele = 0;
         while(rs.next()){
-                if(telePart_usu == rs.getString("telePart_usu")){
+                if(telefono.equalsIgnoreCase(rs.getString("telePart")) == true | telefono.equalsIgnoreCase(rs.getString("teleCelu")) == true){
                     id_tele = rs.getInt("id_tele");
                     return id_tele;
-                    
                 }
+                
         }
-        set.close();
-        rs.close(); 
-        
-        String p = "SELECT '"+teleCelu_usu+"' FROM telefono";
+        return id_tele;
+                
+    }
+    
+    public int buscarIdUsuarioBD(String nombre, String apelPat, String apelMat)
+    throws ServletException, IOException, SQLException{
+        String g = "SELECT * FROM usuario";
 
         set = con.createStatement();
         rs = set.executeQuery(g);
 
-       
+        
+        int id_usu = 0;
         while(rs.next()){
-                if(teleCelu_usu == rs.getString("teleCelu_usu")){
-                    id_tele = rs.getInt("id_tele");
-                    return id_tele;
-                    
+                if(nombre.equalsIgnoreCase(rs.getString("nom_usu")) == true && 
+                    apelPat.equalsIgnoreCase(rs.getString("apelPat_usu")) == true &&
+                    apelMat.equalsIgnoreCase(rs.getString("apelMat_usu")) == true ){
+                        id_usu = rs.getInt("id_usu");
+                        return id_usu;
                 }
+                
         }
-        set.close();
-        rs.close(); 
-        return id_tele;
+        return id_usu;
+                
     }
     
     
