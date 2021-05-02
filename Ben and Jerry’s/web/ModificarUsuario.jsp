@@ -10,18 +10,19 @@
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
       </head>
     <body>
-        <header style="position:sticky;
-        z-index: 100;">
-        <input type="checkbox" id="check">
-        <label for="check" class="checkbtn">
-            <i class="fas fa-bars"></i>
-        </label>
-        <a class="logo" href="index.html">Benito y Gerardo</a>
-    <ul>
-        <li><a class="Header" href="index.html">Inicio</a></li>
-        <li><a class="Header" href="Registro.html">Regístrate</a></li>
-        <li><a class="active" href="ModificarU.html">Modificar usuario</a></li>
-        <li><a class="Header" href="Tienda.html">Tienda</a></li>
+        <header>
+            <input type="checkbox" id="check">
+            <label for="check" class="checkbtn">
+                <i class="fas fa-bars"></i>
+            </label>
+            <a class="logo" href="index.html">Benito y Gerardo</a>
+        <ul>
+            <li><a class="Header" href="index.html">Inicio</a></li>
+            <li><a class="Header" href="Registro.html">Regístrate</a></li>
+            <li><a class="active" href="Usuario.html">Usuario</a></li>
+            <li><a class="Header" href="Tienda.html">Tienda</a></li>
+        </ul>
+        </header>
     </ul>
     </header>
     <section class="contenedorPrincipal">
