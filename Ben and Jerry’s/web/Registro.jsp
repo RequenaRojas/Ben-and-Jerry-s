@@ -4,18 +4,8 @@
     Author     : sofo9
 --%>
 
-<%@page contentType="text/html" pageEncoding="UTF-8"  language="java" import="java.sql.*, java.util.* , Clases.ConexionSQL" %>
-<% 
-    Connection con = null;
-    Statement set = null;
-    ResultSet rs = null;
-    
-    init(con, set,rs);
-    
-
-
-%>
-
+<%@page import="Clases.Usuario"%>
+<%@page contentType="text/html" pageEncoding="UTF-8"  language="java" import="java.sql.*,java.util.Date, java.util.* , Clases.ConexionSQL" %>
 <!DOCTYPE html>
 <html>
     <head>
@@ -23,6 +13,99 @@
         <title>Registro Usuario</title> 
 </head>
     <body>
+<%  //Variables de conexion
+    Connection con = null;
+    Statement set = null;
+    ResultSet rs = null;
+    
+    //Variables del Usuario
+    String nom_usu = request.getParameter("nom_usu");
+    String apelPat_usu = request.getParameter("apelPat_usu");
+    String apelMat_usu = request.getParameter("apelMat_usu");
+    String domi_usu = request.getParameter("domi_usu");
+    String telePart = request.getParameter("telaPart");
+    String teleCelu = request.getParameter("teleCelu");
+    
+    String fechNaci_usu = request.getParameter("fechNaci_usu");
+    
+    
+    //Variables de la conexion del Usuario
+    String ip, iph;
+    int puerto, puertoh;
+    
+    
+    try{
         
+        ConexionSQL sql = new ConexionSQL();
+        
+        sql.init(con, set, rs);
+        
+        
+        System.out.println("Se ha conectado con la BD");
+    
+    
+        try{
+            
+            ip = request.getLocalAddr();
+            puerto = request.getLocalPort();
+            
+            iph = request.getRemoteAddr();
+            puertoh = request.getRemotePort();
+            
+            Usuario.crearUsuarioBD(nom_usu, apelPat_usu, apelMat_usu, fechNaci_usu, domi_usu, telePart, teleCelu, con, set, rs);
+
+            Usuario usu = new Usuario();
+            usu.seleccionarUsuario(nom_usu, apelPat_usu, apelMat_usu, fechNaci_usu, domi_usu, telePart, teleCelu, con, set, rs);
+            
+            System.out.println(nom_usu+"\n"+ apelPat_usu +"\n"+ apelMat_usu +"\n"+ fechNaci_usu+"\n"+ domi_usu +"\n"+ telePart +"\n"+ teleCelu
+                                +"\n"+ ip +"\n"+iph+"\n"+puerto+"\n"+puertoh);
+            
+            
+            
+            
+            
+%>
+            <h1>Usuario Registrado con exito awa</h1>
+            <br>
+            <br>
+            <label>Nombre: <%usu.getNom();%> <%usu.getApelPat_usu();%> <%usu.getApelMat_usu();%> </label>
+            <br>
+            <br>
+            <label>Fecha De Nacimiento <%usu.getfechNaci_usu().toString();%></label>
+            <br>
+            <br>
+            <label>Domicilio <%usu.getDomi_usu();%></label>
+            <br>
+            <br>
+            <label>Telefono Partícular <%usu.getTelaPart();%></label>
+            <br>
+            <br>
+            <label>Telefono Celular <%usu.getTeleCelu();%></label>
+            
+
+    
+<%
+        System.out.println("Se ha registrado correctamente el Usuario");
+        }catch(Exception e){
+            System.out.println("No se ha registrado el usuario");
+            System.out.println(e.getMessage());
+            System.out.println(e.getStackTrace());
+%>
+            <h1>No se ha podido registrar el Usuario</h1>
+<%
+        }
+    
+    
+    
+    
+    }catch(Exception e){
+        System.out.println("Error al conectar con la BD");
+        System.out.println(e.getMessage());
+        System.out.println(e.getStackTrace());
+%>
+        <h1>Hubo un error al Conectarse con la BD</h1>
+<%
+    }    
+%>        
     </body>
 </html>

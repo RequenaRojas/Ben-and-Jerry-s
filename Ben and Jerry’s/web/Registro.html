@@ -1,57 +1,73 @@
-<!DOCTYPE html>
-<!--
-To change this license header, choose License Headers in Project Properties.
-To change this template file, choose Tools | Templates
-and open the template in the editor.
--->
-<html>
-    <head>
-        <title>Registro Usuario</title>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    </head>
-    <body>
-        <h1>Escribe tus datos plox</h1>
-        <div class="contentForm">
-            <form  onsubmit="" name="formUsu" method="post"  
-                  action="Registro.jsp" >
-                <label>Nombre:</label>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registro</title>
+    <link rel="stylesheet" href="./css/estilo.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"/>
+  </head>
+  <body>
+    <header>
+        <input type="checkbox" id="check">
+        <label for="check" class="checkbtn">
+            <i class="fas fa-bars"></i>
+        </label>
+        <label class="logo">
+            Benito y Gerardo
+        </label>
+    <ul>
+        <li><a href="index.html">Inicio</a></li>
+        <li><a class="active" href="Registro.html">Regístrate</a></li>
+        <li><a href="#">Ofertas</a></li>
+        <li><a href="#">Tienda</a></li>
+        <li><a href="#">Sobre nosotros</a></li>
+    </ul>
+    </header>
+    <section class="contenedorPrincipal">
+        <div class="div-form">
+            <h2 style="text-align: left;">Por favor, ingrese sus datos:</h2>
+            <form  onsubmit="" name="formUsu" method="post" action="Registro.jsp" >  
+                <br><br>
+                <label class="nomCam">Nombre:</label>
                 <br>
-                <input type="text" name="nom_usu"  >
+                <input class="campo" type="text" name="nom_usu"  >
+                <br><br>
+                <label class="nomCam">Apellido Paterno:</label>
                 <br>
-                <label>Apellido Paterno:</label>
+                <input class="campo" type="text" name="apelPat_usu"  >
+                <br><br>
+                <label class="nomCam">Apellido Materno:</label>
                 <br>
-                <input type="text" name="apelPat_usu"  >
+                <input class="campo" type="text" name="apelMat_usu"  >
+                <br><br>
+                <label class="nomCam">Fecha de Nacimiento:</label>
                 <br>
-                <label>Apellido Materno:</label>
+                <input class="campo" type="text" name="fechNaci_usu" value="YYYY-MM-DD" pattern="^(\d{4})(\/|-)(0[1-9]|1[0-2])\2([0-2][0-9]|3[0-1])$">
+                <br><br>
+                <label class="nomCam">Domicilio: </label>
                 <br>
-                <input type="text" name="apelMat_usu"  >
+                <input class="campo" type="text" name="domi_usu"  >
+                <br><br>
+                <label class="nomCam">Telefono Celular: </label>
                 <br>
-                <label>Fecha de Nacimiento:</label>
+                <input class="campo" type="tel" name="teleCelu"  >
+                <br><br>
+                <label class="nomCam">Telefono Particular: </label>
                 <br>
-                <input type="date" name="fechNaci_usu">
-                <br>
-                <label>Domicilio: </label>
-                <br>
-                <input type="text" name="email"  >
-                <br>
-                <label>Telefono Celular: </label>
-                <br>
-                <input type="tel" name="teleCelu"  >
-                <br>
-                <label>Telefono Particular: </label>
-                <br>
-                <input type="tel" name="telaPart"  >
-                <br>
-                <br>
-                <input type="submit" value="Enviar Datos de Registro">
+                <input class="campo" type="tel" name="telaPart"  >
                 <br>
                 <br>
-                <input type="reset" value="Borrar Registro">
+                <input class="botón" type="submit" value="Enviar Datos de Registro">
+                <input class="botón" type="reset" value="Borrar Registro" style="margin-left:20px;">
             </form>
-            
-            
-            
-        </div>
-    </body>
+        </div>   
+    </section>
+    <footer>
+        <p>
+            Integrantes del equipo:
+        <br><br>
+            - Fernández García Gael - Morales de los Santos Jaime Emmanuel - Requena Rojas Moisés Sófocles -
+        </p>
+    </footer>
+  </body>
 </html>
