@@ -155,6 +155,22 @@ public class ConexionSQL {
        }
     }
     
+    public void agregarHeladoBS(Helado hel)
+     throws ServletException, IOException, SQLException{
+        //Filtro que no haya nombres repetidos
+        if(this.buscarIdHeladoBD(hel.getNom_hela()) != 0 ){
+        }else{
+            
+        //Aqui lo creo
+            String p = "insert into Helado (nom_hela, id_clas)"
+                    + "values ('"+hel.getNom_hela()+"', "+hel.getId_clas()+") ";
+
+            set.executeUpdate(p);
+            
+        }
+        
+    }
+    
     
     
     //Si el dato no existe en la BD entonces retornara un 0
@@ -243,7 +259,7 @@ public class ConexionSQL {
                 
     }
     
-    public Usuario buscarAdministradorBD(int id_admi)
+    public Administrador buscarAdministradorBD(int id_admi)
     throws ServletException, IOException, SQLException{
         Administrador usu = new Administrador();
         
@@ -283,6 +299,26 @@ public class ConexionSQL {
         
     }
     
+    public String buscarTipoHeladoBD(int id_tipoHela)
+    throws ServletException, IOException, SQLException{
+        String nom_tipoHela = null;
+        String g = "SELECT * FROM TipoHelado";
+
+        set = con.createStatement();
+        rs = set.executeQuery(g);
+        
+        while(rs.next()){
+                if(id_tipoHela == rs.getInt("id_tipoHela")){
+                    nom_tipoHela = rs.getString("nom_tipoHela");
+                    
+                }
+        }
+        
+        
+        return nom_tipoHela;
+        
+    }
+    
     public int buscarIdCantidadBD(String nom_cant )
     throws ServletException, IOException, SQLException{
         String g = "SELECT * FROM Cantidad";
@@ -293,13 +329,53 @@ public class ConexionSQL {
         
         int id_cant = 0;
         while(rs.next()){
-                if(nom_cant.equalsIgnoreCase(rs.getString("nom_cant")) == true){
+                if(nom_cant.equalsIgnoreCase(rs.getString("tamaño")) == true){
                         id_cant = rs.getInt("id_cant");
                         return id_cant;
                 }
                 
         }
         return id_cant;
+        
+    }
+    
+    public String buscarCantidadBD(int id_cant)
+    throws ServletException, IOException, SQLException{
+        String tamaño= null;
+        String g = "SELECT * FROM Cantidad";
+
+        set = con.createStatement();
+        rs = set.executeQuery(g);
+        
+        while(rs.next()){
+                if(id_cant == rs.getInt("id_cant")){
+                    tamaño = rs.getString("tamaño");
+                    
+                }
+        }
+        
+        
+        return tamaño;
+        
+    }
+    
+    public float buscarCantidadGramosBD(int id_cant)
+    throws ServletException, IOException, SQLException{
+        float gramos = 0;
+        String g = "SELECT * FROM Cantidad";
+
+        set = con.createStatement();
+        rs = set.executeQuery(g);
+        
+        while(rs.next()){
+                if(id_cant == rs.getInt("id_cant")){
+                    gramos = rs.getFloat("gramos");
+                    
+                }
+        }
+        
+        
+        return gramos;
         
     }
     
@@ -323,6 +399,26 @@ public class ConexionSQL {
         
     }
     
+    public String buscarPresentacionBD(int id_pres)
+    throws ServletException, IOException, SQLException{
+        String nom_pres = null;
+        String g = "SELECT * FROM Cantidad";
+
+        set = con.createStatement();
+        rs = set.executeQuery(g);
+        
+        while(rs.next()){
+                if(id_pres == rs.getInt("id_pres")){
+                    nom_pres = rs.getString("nom_pres");
+                    
+                }
+        }
+        
+        
+        return nom_pres;
+        
+    }
+    
     public int buscarIdClasificacionBD(int id_tipoHela, int id_cant, int id_pres)
     throws ServletException, IOException, SQLException{
          String g = "SELECT * FROM Clasificacion";
@@ -342,6 +438,71 @@ public class ConexionSQL {
         return id_clas;
     }
     
+    public Clasificacion buscarClasificacionBD(int id_clas)
+    throws ServletException, IOException, SQLException{
+        Clasificacion clas = new Clasificacion();
+        
+        String g = "SELECT * FROM Clasificacion";
+
+        set = con.createStatement();
+        rs = set.executeQuery(g);
+        
+        while(rs.next()){
+                if(id_clas == rs.getInt("id_hela")){
+                    clas.setId_clas(id_clas);
+                    clas.setId_tipoHela(rs.getInt("id_tipoHela"));
+                    clas.setId_cant(rs.getInt("id_cant"));
+                    clas.setId_pres(rs.getInt("id_pres"));
+                    
+                }
+        }
+        return clas;
+    }
+    
+    public int buscarIdHeladoBD(String nom_hela)
+    throws ServletException, IOException, SQLException{
+        String g = "SELECT * FROM helado";
+
+        set = con.createStatement();
+        rs = set.executeQuery(g);
+
+        
+        int id_hela = 0;
+        while(rs.next()){
+            if(nom_hela.equalsIgnoreCase(rs.getString("nom_hela"))){
+                id_hela = rs.getInt("id_clas");
+                return id_hela;
+            }
+        }
+        
+        return id_hela;
+    }
+    
+    public Helado buscarHelado(int id_hela)
+    throws ServletException, IOException, SQLException{
+        Helado usu = new Helado();
+        
+        String g = "SELECT * FROM Helado";
+
+        set = con.createStatement();
+        rs = set.executeQuery(g);
+        
+        while(rs.next()){
+                if(id_hela == rs.getInt("id_hela")){
+                    usu.setId_hela(id_hela);
+                    usu.setNom_hela(rs.getString("nom_hela"));
+                    usu.setId_clas(rs.getInt("id_clas"));
+                    usu.setPrec_hela(rs.getFloat("prec_hela"));
+                    usu.setAtributos(rs.getInt("id_clas"), this);
+                }
+        }
+        
+        
+        return usu;
+        
+        
+    }
+    
     
     //Editar Datos de una fila
     public void editarUsuario(int id_usu, Usuario usu)
@@ -359,7 +520,25 @@ public class ConexionSQL {
         set.executeUpdate(q);
     }
    
-    
+    //Eliminar Datos
+    public void eliminarUsuario(int id_usu)
+    throws ServletException, IOException, SQLException{
+        
+        Usuario usu = new Usuario();
+        usu = this.buscarUsuarioBD(id_usu);
+        
+        String g = "delete from Telefono where id_tele = "+usu.getId_tele(this);
+        set.executeUpdate(g);
+        
+        
+        
+        
+        String q = "delete from Usuario where id_usu = "+id_usu;
+                
+        set.executeUpdate(q);
+        System.out.println("Registro eliminado con exito");
+        
+    }
     
     
     

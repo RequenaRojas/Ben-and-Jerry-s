@@ -2,7 +2,7 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Modificar usuario</title>
+    <title>Modificar mis datos</title>
     <link rel="stylesheet" href="./css/estilo.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"/>
   </head>
@@ -21,14 +21,51 @@
     </ul>
     </header>
     <section class="contenedorPrincipal">
-        <div class="div-contenido" style="text-align: center;">
-            <h2 style="text-align: center;">¿Qué deseas hacer?</h2>
-            <br><br>
-            <a class="link" href="MUModificar.html">Modificar mis datos</a>
-            <br><br><br><br><br><br><br><br><br><br><br><br><br><br>
-        </div>
+        <div class="div-form">
+            <form  onsubmit="" name="formUsu" method="post" action="ModificarUsuario.jsp" >  
+                <h2 style="text-align: left;">Llene los campos que desee modificar:</h2>
+                <br><br>
+                <label class="nomCam">ID de tu Usuario: </label>
+                <br>
+                <input class="campo" type="text" name="id_usu"  >
+                <br><br>
+                <label class="nomCam">Nombre:</label>
+                <br>
+                <input class="campo" type="text" name="nom_usu"  >
+                <br><br>
+                <label class="nomCam">Apellido paterno:</label>
+                <br>
+                <input class="campo" type="text" name="apelPat_usu"  >
+                <br><br>
+                <label class="nomCam">Apellido materno:</label>
+                <br>
+                <input class="campo" type="text" name="apelMat_usu"  >
+                <br><br>
+                <label class="nomCam">Fecha de nacimiento:</label>
+                <br>
+                <input class="campo" type="text" name="fechNaci_usu" value="YYYY-MM-DD" pattern="^(\d{4})(\/|-)(0[1-9]|1[0-2])\2([0-2][0-9]|3[0-1])$">
+                <br><br>
+                <label class="nomCam">Domicilio: </label>
+                <br>
+                <input class="campo" type="text" name="domi_usu"  >
+                <br><br>
+                <label class="nomCam">Teléfono celular: </label>
+                <br>
+                <input class="campo" type="tel" name="teleCelu"  >
+                <br><br>
+                <label class="nomCam">Teléfono particular: </label>
+                <br>
+                <input class="campo" type="tel" name="telaPart"  >
+                <br>
+                <br>
+                <input class="botón" type="submit" value="Enviar datos de registro">
+                <br><br>
+                <input class="botón" type="reset" value="Borrar datos de registro">
+                <a href="EliminarUsuario.html">Eliminar Usuario</a>
+            </form>
+        </div>   
     </section>
-    <footer style="margin-top: 61px;">
+    <footer>
         <p>
         <br>
             Integrantes del equipo:
