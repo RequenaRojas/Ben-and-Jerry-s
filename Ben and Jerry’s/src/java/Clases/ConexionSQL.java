@@ -86,7 +86,7 @@ public class ConexionSQL {
        }
     }
     
-    //Si el numero ya existe entonces retornara un 0
+    //Si el dato no existe en la BD entonces retornara un 0
     public int buscarIDTelefonoBD(String telefono)
     throws ServletException, IOException, SQLException{
         String g = "SELECT * FROM telefono";

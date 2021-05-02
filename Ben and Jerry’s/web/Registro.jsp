@@ -61,45 +61,47 @@
 
             sql.agregarUsuarioBD(usu);
             
-            
-            System.out.println(nom_usu+"\n"+ apelPat_usu +"\n"+ apelMat_usu +"\n"+ fechNaci_usu+"\n"+ domi_usu +"\n"+ telePart +"\n"+ teleCelu
-                                +"\n"+ ip +"\n"+iph+"\n"+puerto+"\n"+puertoh);
-            
-            
-            
-            
-            
+            if(sql.buscarIdUsuarioBD(nom_usu, apelPat_usu, apelMat_usu)== 0){
 %>
-            <h1>Usuario Registrado con exito awa</h1>
-            
-            <br>
-            <br>
-            <label>Nombre: <%=usu.getNom()%> <%=usu.getApelPat_usu()%> <%=usu.getApelMat_usu()%> </label>
-            <br>
-            <br>
-            <label>Fecha De Nacimiento: <%=usu.getfechNaci_usu().toString()%></label>
-            <br>
-            <br>
-            <label>Domicilio: <%=usu.getDomi_usu()%></label>
-            <br>
-            <br>
-            <label>Telefono Partícular: <%=usu.getTelePart()%></label>
-            <br>
-            <br>
-            <label>Telefono Celular: <%=usu.getTeleCelu()%></label>
-            
+                <h1>Ya existe este Usuario con Nombre, Apellidos Paterno y Materno que acabás de escribir</h1>
 
-    
+
 <%
-        System.out.println("Se ha registrado correctamente el Usuario");
+              
+                
+            }else{
+%>
+                <h1>Usuario Registrado con exito awa</h1>
+
+                <br>
+                <br>
+                <label>Nombre: <%=usu.getNom()%> <%=usu.getApelPat_usu()%> <%=usu.getApelMat_usu()%> </label>
+                <br>
+                <br>
+                <label>Fecha De Nacimiento: <%=usu.getfechNaci_usu().toString()%></label>
+                <br>
+                <br>
+                <label>Domicilio: <%=usu.getDomi_usu()%></label>
+                <br>
+                <br>
+                <label>Telefono Partícular: <%=usu.getTelePart()%></label>
+                <br>
+                <br>
+                <label>Telefono Celular: <%=usu.getTeleCelu()%></label>
+
+
+
+    <%
+            }
+            System.out.println("Se ha registrado correctamente el Usuario");    
         }catch(Exception e){
-            System.out.println("No se ha registrado el usuario");
-            System.out.println(e.getMessage());
-            System.out.println(e.getStackTrace());
+                System.out.println("No se ha registrado el usuario");
+                System.out.println(e.getMessage());
+                System.out.println(e.getStackTrace());
 %>
             <h1>No se ha podido registrar el Usuario</h1>
 <%
-        }
+    }
     
     
 
