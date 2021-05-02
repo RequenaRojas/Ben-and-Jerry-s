@@ -4,8 +4,8 @@
     Author     : sofo9
 --%>
 
-<%@page import="Clases.Usuario"%>
-<%@page contentType="text/html" pageEncoding="UTF-8"  language="java" import="java.sql.*,java.util.Date, java.util.* , Clases.ConexionSQL, java.text.*" %>
+
+<%@page contentType="text/html" pageEncoding="UTF-8"  language="java" import="java.sql.*,java.util.Date, java.util.* , Clases.*, java.text.*" %>
 <!DOCTYPE html>
 <html>
     <head>
@@ -123,3 +123,9 @@
 %>        
     </body>
 </html>
+
+<%try{
+        con.close();
+    }catch(Exception e){
+        super.destroy();
+    } %>

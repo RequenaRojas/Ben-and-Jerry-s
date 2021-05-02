@@ -29,7 +29,7 @@ public class Usuario {
     int id_tele;
     
     
-    
+    public void Usuario(){}
     public void Usuario(String nom_usu, String apelPat_usu, String apelMat_usu, String fechNaci_usu, 
                         String domi_usu, String telePart, String teleCelu){
         
@@ -95,7 +95,26 @@ public class Usuario {
         return this.teleCelu;
     }
     
-    //Metodos get de ids
+    public void setId(int id){
+        this.id_usu = id;
+    }
+    public void setId_tele(int id){
+        this.id_tele = id;
+    }
+    
+    //Necesito conectarme a la BD
+    public int getId(ConexionSQL sql)
+    throws ServletException, IOException, SQLException{
+        return sql.buscarIdUsuarioBD(this.nom_usu, this.apelPat_usu, this.apelMat_usu);
+    }
+    
+    public int getId_tele(ConexionSQL sql)
+    throws ServletException, IOException, SQLException{
+        int id_tele = sql.buscarIDTelefonoBD(this.telePart);
+        return id_tele;
+  }
+    
+    
     
     
     
