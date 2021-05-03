@@ -27,7 +27,7 @@
 <% 
 try{
     
-    q="select * from TipoHelado";
+    q = "select * from TipoHelado";
     
     
     

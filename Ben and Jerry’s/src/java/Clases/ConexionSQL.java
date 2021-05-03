@@ -338,6 +338,8 @@ public class ConexionSQL {
         
     }
     
+    
+    
     public int buscarIdCantidadBD(String nom_cant )
     throws ServletException, IOException, SQLException{
         String g = "SELECT * FROM Cantidad";
@@ -521,6 +523,8 @@ public class ConexionSQL {
         
         
     }
+    
+    
     
     public int buscarIdOferta(String nom_ofer)
     throws ServletException, IOException, SQLException{
