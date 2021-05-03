@@ -21,12 +21,9 @@
     //Variables del Helado
     String nom_hela = request.getParameter("nom_hela");
     String nom_tipoHela = request.getParameter("nom_tipoHela");
-    
-    String tamaño = (String)request.getParameter("nom_cant");
-    
+    String tamaño = (String)request.getParameter("nom_cant"); 
     String nom_pres = request.getParameter("nom_pres");
     float prec_hela = Float.parseFloat(request.getParameter("pre_hela"));
-    
     int id_tipoHela, id_cant, id_pres, id_clas;
     
     try{
@@ -50,15 +47,7 @@
             id_cant = sql.buscarIdCantidadBD(tamaño);
             
             id_pres = sql.buscarIdPresentacionoBD(nom_pres);
-            
-            System.out.println(id_tipoHela);
-            System.out.println(id_cant);
-            System.out.println(id_pres);
-            
-            
-            
-            
-            
+        
             //Filtro que las llaves foraneas existan
             if(id_tipoHela == 0 | id_cant == 0 | id_pres == 0){
 %>
@@ -73,17 +62,11 @@
                 //Consigo mi clasificacion apartir de las llaves foraneas
                 id_clas = sql.buscarIdClasificacionBD(id_tipoHela, id_cant , id_pres);
 
-                System.out.println(nom_hela);
-                System.out.println(prec_hela);
-                System.out.println(id_pres);
-                System.out.println(id_clas);
                 
                 Helado hela = new Helado();
-                System.out.println("Despues de crear el objeto helado");
-
+                
 
                 hela.Helado(nom_hela, prec_hela, id_clas);
-System.out.println("antes de setAtributos");
                 hela.setAtributos(id_clas, sql);
 
                 if(sql.buscarIdHeladoBD(nom_hela) != 0){

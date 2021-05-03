@@ -48,7 +48,7 @@ public class Clasificacion  {
         this.tamaño = sql.buscarCantidadBD(clas.getId_cant());
         this.gramos = sql.buscarCantidadGramosBD(clas.getId_cant());
         
-        System.out.println(clas.getId_pres());
+        
         this.nom_pres = sql.buscarPresentacionBD(clas.getId_pres());
 
         

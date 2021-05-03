@@ -519,6 +519,14 @@ public class ConexionSQL {
         
         set.executeUpdate(q);
     }
+    public void editarHelado(int id_hela, Helado usu)
+     throws ServletException, IOException, SQLException{
+        
+        
+        
+        String q = "update Helado set nom_hela='"+usu.nom_hela+"',id_clas = "+usu.getId_clas()+", prec_hela = "+usu.getPrec_hela()+"   where id_hela = "+usu.getId_hela()+"  ";
+        set.executeUpdate(q);
+    }
    
     //Eliminar Datos
     public void eliminarUsuario(int id_usu)
