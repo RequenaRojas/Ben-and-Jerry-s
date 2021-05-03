@@ -73,7 +73,7 @@
         }catch(Exception e){
             System.out.println("No se ha podido Eliminar el Usuario");
  %>
-                <h2 style="text-align:center">El Usuario no se ha podido Eliminar, Asegurese de Escribir un ID Existente</h2>
+                <h2 style="text-align:center">El Usuario no se ha podido eliminar, asegurese de escribir un ID existente</h2>
 <%   
         }
         
