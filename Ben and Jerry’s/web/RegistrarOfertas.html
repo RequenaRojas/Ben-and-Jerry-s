@@ -1,0 +1,72 @@
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Registrar Ofertas</title>
+        <link rel="stylesheet" href="./css/estilo.css">
+        <link rel="shortcut icon" href="https://www.drodd.com/images16/pastel-blue6.jpg">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"/>
+      </head>
+      <body>
+        <header>
+            <input type="checkbox" id="check">
+            <label for="check" class="checkbtn">
+                <i class="fas fa-bars"></i>
+            </label>
+            <a class="logo" href="index.html">Benito y Gerardo</a>
+        <ul>
+            <li><a class="Header" href="index.html">Inicio</a></li>
+            <li><a class="Header" href="Registro.html">Regístrate</a></li>
+            <li><a class="active" href="Usuario.html">Usuario</a></li>
+            <li><a class="Header" href="Tienda.html">Tienda</a></li>
+        </ul>
+        </header>
+        <section class="contenedorPrincipal">
+            <div class="div-form">
+            <form  onsubmit="" name="formElimUsu" method="post" action="RegistrarOfertas.jsp">  
+                <h2 style="text-align: left;">Ingrese las características de la oferta:</h2>
+                <br>
+                <br>
+                <label class="nomCam">ID del Admin:  </label>
+                <br>
+                <input class="campo" type="text" name="id_admin" pattern="\d+" >
+                <br><br>
+                <label>Nombre de la oferta: </label>
+                <br>
+                <input class="campo" type="text" name="nom_ofer" pattern="[A-Z a-z\s]">
+                <br><br>
+                <label class="nomCam">Porcentaje del descuento (%): </label>
+                <br>
+                <input class="campo" type="number" name="porc_ofer" pattern="^([0-9])$">
+                <br>
+                <br>
+                <label class="nomCam">Tipo de helado: </label>
+                <br>
+                <input class="campo" type="text" name="nom_tipoHela" pattern="[A-Z a-z\s]">
+                <br>
+                <br>
+                <label class="nomCam">Tamaño:</label>
+                <br>
+                <input class="campo" type="text" name="Tamaño" pattern="[A-Z a-z\s]">
+                <br>
+                <br>
+                <label class="nomCam">Presentación:</label>
+                <br>
+                <input class="campo" type="text" name="nom_pres" pattern="[A-Z a-z\s]">
+                <br>
+                <br>
+                <input class="botón" type="submit" value="Enviar">
+            </form>
+            </div>
+        </section>
+        <footer>
+            <p>
+            <br>
+                Integrantes del equipo:
+            <br><br>
+                - Fernández García Gael - Morales de los Santos Jaime Emmanuel - Requena Rojas Moisés Sófocles -
+            <br><br>
+            </p>
+        </footer> 
+    </body>
+</html>
