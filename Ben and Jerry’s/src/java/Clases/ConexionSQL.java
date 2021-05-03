@@ -171,6 +171,25 @@ public class ConexionSQL {
         
     }
     
+    public void agregarOferta(Oferta ofer)
+     throws ServletException, IOException, SQLException{
+        //Filtro que no haya nombres repetidos
+        if(this.buscarIdOferta(ofer.getNom_ofer()) != 0 ){
+        }else{
+            
+        //Aqui lo creo
+            String p = "insert into Oferta (nom_hela, porc_oferta, id_clas, id_admi)"
+                    + "values ('"+ofer.getNom_ofer()+"', "+ofer.getPorc_ofer()+", "+ofer.getId_clas()+"), "+ofer.getId_admi()+") ";
+
+            set.executeUpdate(p);
+            
+        }
+        
+        
+        
+        
+    }
+    
     
     
     //Si el dato no existe en la BD entonces retornara un 0
@@ -503,6 +522,47 @@ public class ConexionSQL {
         
     }
     
+    public int buscarIdOferta(String nom_ofer)
+    throws ServletException, IOException, SQLException{
+        String g = "SELECT * FROM helado";
+
+        set = con.createStatement();
+        rs = set.executeQuery(g);
+
+        
+        int id_hela = 0;
+        while(rs.next()){
+            if(nom_ofer.equalsIgnoreCase(rs.getString("nom_ofer"))){
+                id_hela = rs.getInt("id_ofer");
+                return id_hela;
+            }
+        }
+        
+        return id_hela;
+    }
+    
+    public Oferta buscarOferta(int id_ofer)
+     throws ServletException, IOException, SQLException{
+        Oferta ofer = new Oferta();
+        String g = "SELECT * FROM Oferta";
+
+        set = con.createStatement();
+        rs = set.executeQuery(g);
+        
+        while(rs.next()){
+                if(id_ofer == rs.getInt("id_ofer")){
+                    ofer.setId_ofer(id_ofer);
+                    ofer.setNom_ofer(rs.getString("nom_ofer"));
+                    ofer.setPor_ofer(rs.getInt("porc_ofer"));
+                    ofer.setId_admi(rs.getInt("id_admi"));
+                    ofer.setId_admi(rs.getInt("id_admi"));
+                }
+        }
+        
+        
+        return ofer;
+    }
+    
     
     //Editar Datos de una fila
     public void editarUsuario(int id_usu, Usuario usu)
@@ -519,12 +579,19 @@ public class ConexionSQL {
         
         set.executeUpdate(q);
     }
+    
     public void editarHelado(int id_hela, Helado usu)
      throws ServletException, IOException, SQLException{
         
         
+        String q = "update Helado set nom_hela='"+usu.nom_hela+"',id_clas = "+usu.getId_clas()+", prec_hela = "+usu.getPrec_hela()+"   where id_hela = "+id_hela+"  ";
+        set.executeUpdate(q);
+    }
+    
+    public void editarOferta(int id_ofer, Oferta ofer)
+     throws ServletException, IOException, SQLException{
         
-        String q = "update Helado set nom_hela='"+usu.nom_hela+"',id_clas = "+usu.getId_clas()+", prec_hela = "+usu.getPrec_hela()+"   where id_hela = "+usu.getId_hela()+"  ";
+        String q = "update Oferta set nom_ofer='"+ofer.getNom_ofer()+"',por_ofer = "+ofer.getPorc_ofer()+", id_clas = "+ofer.getId_clas()+", id_admi = "+ofer.getId_admi()+"    where id_hela = "+id_ofer+"  ";
         set.executeUpdate(q);
     }
    
@@ -546,7 +613,9 @@ public class ConexionSQL {
         set.executeUpdate(q);
         System.out.println("Registro eliminado con exito");
         
-    } public void eliminarHelado(int id_hela)
+    } 
+    
+    public void eliminarHelado(int id_hela)
     throws ServletException, IOException, SQLException{
         
         
@@ -556,6 +625,15 @@ public class ConexionSQL {
         set.executeUpdate(q);
         
     }
+    
+    public void eliminarOferta(int id_ofer)throws ServletException, IOException, SQLException{
+        
+        String q = "delete from Oferta where id_hela = "+id_ofer;
+                
+        set.executeUpdate(q);
+        
+    }
+    
     
     
     

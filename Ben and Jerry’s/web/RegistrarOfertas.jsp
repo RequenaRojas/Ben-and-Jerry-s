@@ -4,7 +4,7 @@
     Author     : sofo9
 --%>
 
-<%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@page contentType="text/html" pageEncoding="UTF-8"  language="java" import="java.sql.*,java.util.Date, java.util.* , Clases.*, java.text.*" %>
 <!DOCTYPE html>
 <html>
     <head>

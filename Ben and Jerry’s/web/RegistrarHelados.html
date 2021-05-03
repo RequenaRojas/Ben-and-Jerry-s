@@ -1,44 +1,65 @@
-<!DOCTYPE html>
-
 <html>
     <head>
         <title>Registrar helados</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="./css/estilo.css">
+        <link rel="shortcut icon" href="https://www.drodd.com/images16/pastel-blue6.jpg">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
     </head>
     <body>
-        <div>
-            <form  onsubmit="" name="formUsu" method="post" action="RegistroHelado.jsp" >  
+        <header>
+            <input type="checkbox" id="check">
+            <label for="check" class="checkbtn">
+                <i class="fas fa-bars"></i>
+            </label>
+            <a class="logo" href="index.html">Benito y Gerardo</a>
+        <ul>
+            <li><a class="Header" href="index.html">Inicio</a></li>
+            <li><a class="Header" href="Registro.html">Regístrate</a></li>
+            <li><a class="active" href="Usuario.html">Usuario</a></li>
+            <li><a class="Header" href="Tienda.html">Tienda</a></li>
+        </ul>
+        </header>
+        <section class="contenedorPrincipal">
+        <div class="div-form">
+            <form  onsubmit="" name="formUsu" method="post" action="RegistroHelado.jsp" >
+                <h2 style="text-align: left;">Ingrese las características del helado:</h2>
                 <br><br>
-                <label class="nomCam">Nombre del Helado: </label>
+                <label class="nomCam">Nombre del helado:</label>
                 <br>
-                <input class="campo" type="text" name="nom_hela" pattern="[A-Za-z]{2,10}" >
+                <input class="campo" type="text" name="nom_hela"  >
                 <br><br>
                 <label class="nomCam">Tipo de helado: </label>
                 <br>
-                <input class="campo" type="text" name="nom_tipoHela"  pattern="[A-Za-z]{2,10}">
+                <input class="campo" type="text" name="nom_tipoHela" pattern="[A-Za-z]{2,10}">
                 <br><br>
                 <label class="nomCam">Tamaño: </label>
                 <br>
-                <input class="campo" type="text" name="nom_cant" pattern="[A-Za-z]{2,10}">
-                <br>
+                <input class="campo" type="text" name="tamano" >
+                <br><br>
                 <label class="nomCam">Presentación: </label>
                 <br>
-                <input class="campo" type="text" name="nom_pres" pattern="[A-Za-z]{2,10}" >
-                
+                <input class="campo" type="text" name="nom_pres" pattern="[A-Za-z]{2,10}">
                 <br><br>
-                <label class="nomCam">Precio del Helado:</label>
+                <label class="nomCam">Precio del helado:</label>
                 <br>
-                <input type="number" name ="pre_hela" step="any" placeholder="1.0" min="1" max="1000" pattern="^(\d|)?(\d|,)*\.?\d*$"/>
-                
+                <input type="number" name ="pre_hela" step="any" placeholder="1.0" min="1" max="1000"/>
+                <br><br>
                 <input class="botón" type="submit" value="Enviar Datos de Registro">
-                <input class="botón" type="reset" value="Borrar Registro" style="margin-left:20px;">
-            </form>
-            
-            
-            
-            
-            
+                <br><br>
+                <input class="botón" type="reset" value="Borrar Registro">
+            </form>          
         </div>
+    </section>
+    <footer>
+        <p>
+        <br>
+            Integrantes del equipo:
+        <br><br>
+            - Fernández García Gael - Morales de los Santos Jaime Emmanuel - Requena Rojas Moisés Sófocles -
+        <br><br>
+        </p>
+    </footer>
     </body>
 </html>
