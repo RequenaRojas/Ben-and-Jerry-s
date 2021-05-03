@@ -546,7 +546,17 @@ public class ConexionSQL {
         set.executeUpdate(q);
         System.out.println("Registro eliminado con exito");
         
+    } public void eliminarHelado(int id_hela)
+    throws ServletException, IOException, SQLException{
+        
+        
+        
+        String q = "delete from Helado where id_hela = "+id_hela;
+                
+        set.executeUpdate(q);
+        
     }
+    
     
     
     

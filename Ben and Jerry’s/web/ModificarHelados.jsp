@@ -27,8 +27,6 @@
     float prec_hela = Float.parseFloat(request.getParameter("pre_hela"));
     int id_tipoHela, id_cant, id_pres, id_clas;
 
-    System.out.println(id_hela + " " + nom_hela+" "+nom_tipoHela+" "+ tamaño+" "
-    + nom_pres+" " +prec_hela );
 try{
      ConexionSQL sql = new ConexionSQL();
         
