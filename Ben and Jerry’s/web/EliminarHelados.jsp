@@ -26,32 +26,84 @@
     </header>
     <section class="contenedorPrincipal">
         
-<%
-     //Variables de conexion
-    Connection con = null;
-    Statement set = null;
-    ResultSet rs = null;
-    
-    try{
-         ConexionSQL sql = new ConexionSQL();
-        
-        sql.init(con, set);
-        
-        con = sql.getCon();
-        set = sql.getSet();
-        
-        
-        System.out.println("Se ha conectado con la BD");
+        <% 
+        //Variables de conexion
+            Connection con = null;
+            Statement set = null;
+            ResultSet rs = null;
+        //Variables del Helado
+            int id_hela = Integer.parseInt(request.getParameter("id_hela"));
+            Helado hela = new Helado();
+           
         try{
-            String tamaño = (String)request.getParameter("tamaño");
-            System.out.println(tamaño);
-        }catch(Exception e){
+             ConexionSQL sql = new ConexionSQL();
+                
+                sql.init(con, set);
+                
+                con = sql.getCon();
+                set = sql.getSet();
+                
+                
+                System.out.println("Se ha conectado con la BD");
             
-        }
-        
-    }catch(Exception e){
-    
-    }
-%>
+            
+                try{
+                    
+                    hela = sql.buscarHelado(id_hela);
+                    hela.setAtributos(hela.getId_clas(), sql);
+                    
+        %>
+        <h2 style="text-align: left;">Se ha borrado el helado con las siguientes características: </h2>
+        <p  class="texto" style="text-align: center; margin-top:40px; margin-left: 40px; margin-right: 40px;"></p>
+            Nombre: <%=hela.getNom_hela() %>
+            <br><br>
+            Tamaño: <%=hela.getTamaño() %>
+            <br><br>
+            Tipo de helado <%=hela.getNom_tipoHela() %>
+            <br><br>
+            Presentación: <%=hela.getNom_pres()  %>
+            <br><br>
+            Precio: $<%=hela.getPrec_hela()  %>
+            <br><br>
+            Id del Helado es: <%= hela.getId_hela() %>
+        </p>
+                        
+        <%
+                
+                        sql.eliminarHelado(id_hela);
+                    }catch(Exception e){
+                    System.out.println("No se ha podido modificar el Helado");
+                        System.out.println(e.getMessage());
+                        System.out.println(e.getStackTrace());
+                
+        %>
+        <h2 style="text-align: left;">No se ha borrado el helado, hubo un error</h2>
+        <%
+                    }
+            }catch(Exception e){
+                System.out.println("Error al conectar con la BD");
+                System.out.println(e.getMessage());
+                System.out.println(e.getStackTrace());
+        %>
+        <h2 style="text-align: left;">Hubo un error al Conectarse con la BD</h2>
+            
+        <%}%>
+        <br><br><br>
+        <a class="link" href="index.html" style="text-align: center;">Regresar a inicio</a>
+        </section>
+        <footer>
+            <p>
+            <br>
+                Integrantes del equipo:
+            <br><br>
+                - Fernández García Gael - Morales de los Santos Jaime Emmanuel - Requena Rojas Moisés Sófocles -
+            <br><br>
+            </p>
+        </footer>
     </body>
 </html>
+        <%try{
+                con.close();
+            }catch(Exception e){
+                super.destroy();
+            } %>

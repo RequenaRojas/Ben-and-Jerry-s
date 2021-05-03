@@ -23,8 +23,6 @@
             <li><a class="Header" href="Tienda.html">Tienda</a></li>
         </ul>
         </header>
-    </ul>
-    </header>
     <section class="contenedorPrincipal">
 <% 
     //Variables de conexion
