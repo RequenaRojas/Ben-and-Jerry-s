@@ -47,8 +47,10 @@ public class Clasificacion  {
         this.nom_tipoHela = sql.buscarTipoHeladoBD(clas.getId_tipoHela());
         this.tamaño = sql.buscarCantidadBD(clas.getId_cant());
         this.gramos = sql.buscarCantidadGramosBD(clas.getId_cant());
-        this.nom_pres = sql.buscarPresentacionBD(clas.getId_pres());
         
+        System.out.println(clas.getId_pres());
+        this.nom_pres = sql.buscarPresentacionBD(clas.getId_pres());
+
         
     }
     

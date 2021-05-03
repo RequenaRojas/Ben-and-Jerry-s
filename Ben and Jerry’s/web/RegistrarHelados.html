@@ -10,26 +10,26 @@
         <div>
             <form  onsubmit="" name="formUsu" method="post" action="RegistroHelado.jsp" >  
                 <br><br>
-                <label class="nomCam">Nombre del Helado:</label>
+                <label class="nomCam">Nombre del Helado: </label>
                 <br>
-                <input class="campo" type="text" name="nom_hela"  >
+                <input class="campo" type="text" name="nom_hela" pattern="[A-Za-z]{2,10}" >
                 <br><br>
                 <label class="nomCam">Tipo de helado: </label>
                 <br>
-                <input class="campo" type="text" name="nom_tipoHela"   >
+                <input class="campo" type="text" name="nom_tipoHela"  pattern="[A-Za-z]{2,10}">
                 <br><br>
                 <label class="nomCam">Tamaño: </label>
                 <br>
-                <input class="campo" type="text" name="tamano" >
-                <br><br>
+                <input class="campo" type="text" name="nom_cant" pattern="[A-Za-z]{2,10}">
+                <br>
                 <label class="nomCam">Presentación: </label>
                 <br>
-                <input class="campo" type="text" name="nom_pres"  >
+                <input class="campo" type="text" name="nom_pres" pattern="[A-Za-z]{2,10}" >
                 
                 <br><br>
                 <label class="nomCam">Precio del Helado:</label>
                 <br>
-                <input type="number" name ="pre_hela" step="any" placeholder="1.0" min="1" max="1000"/>
+                <input type="number" name ="pre_hela" step="any" placeholder="1.0" min="1" max="1000" pattern="^(\d|)?(\d|,)*\.?\d*$"/>
                 
                 <input class="botón" type="submit" value="Enviar Datos de Registro">
                 <input class="botón" type="reset" value="Borrar Registro" style="margin-left:20px;">

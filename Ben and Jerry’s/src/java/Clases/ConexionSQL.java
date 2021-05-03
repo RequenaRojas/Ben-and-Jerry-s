@@ -162,8 +162,8 @@ public class ConexionSQL {
         }else{
             
         //Aqui lo creo
-            String p = "insert into Helado (nom_hela, id_clas)"
-                    + "values ('"+hel.getNom_hela()+"', "+hel.getId_clas()+") ";
+            String p = "insert into Helado (nom_hela, id_clas, prec_hela)"
+                    + "values ('"+hel.getNom_hela()+"', "+hel.getId_clas()+", "+hel.getPrec_hela()+") ";
 
             set.executeUpdate(p);
             
@@ -402,7 +402,7 @@ public class ConexionSQL {
     public String buscarPresentacionBD(int id_pres)
     throws ServletException, IOException, SQLException{
         String nom_pres = null;
-        String g = "SELECT * FROM Cantidad";
+        String g = "SELECT * FROM Presentacion";
 
         set = con.createStatement();
         rs = set.executeQuery(g);
@@ -448,7 +448,7 @@ public class ConexionSQL {
         rs = set.executeQuery(g);
         
         while(rs.next()){
-                if(id_clas == rs.getInt("id_hela")){
+                if(id_clas == rs.getInt("id_clas")){
                     clas.setId_clas(id_clas);
                     clas.setId_tipoHela(rs.getInt("id_tipoHela"));
                     clas.setId_cant(rs.getInt("id_cant"));

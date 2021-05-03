@@ -21,7 +21,9 @@
     //Variables del Helado
     String nom_hela = request.getParameter("nom_hela");
     String nom_tipoHela = request.getParameter("nom_tipoHela");
-    String tamaño = request.getParameter("tamaño");
+    
+    String tamaño = (String)request.getParameter("nom_cant");
+    
     String nom_pres = request.getParameter("nom_pres");
     float prec_hela = Float.parseFloat(request.getParameter("pre_hela"));
     
@@ -42,8 +44,6 @@
     
         try{
             //Consigo los id foraneas de Clasificacion
-            System.out.println("Antes de sacar el id_tipoHela");
-            System.out.println(nom_tipoHela+" "+ tamaño+ " "+ nom_pres + " " + prec_hela);
             
             id_tipoHela = sql.buscarIdTipoHeladoBD(nom_tipoHela);
             
@@ -76,12 +76,15 @@
                 System.out.println(nom_hela);
                 System.out.println(prec_hela);
                 System.out.println(id_pres);
+                System.out.println(id_clas);
                 
                 Helado hela = new Helado();
                 System.out.println("Despues de crear el objeto helado");
 
 
                 hela.Helado(nom_hela, prec_hela, id_clas);
+System.out.println("antes de setAtributos");
+                hela.setAtributos(id_clas, sql);
 
                 if(sql.buscarIdHeladoBD(nom_hela) != 0){
     %>
