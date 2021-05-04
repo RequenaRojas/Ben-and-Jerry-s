@@ -31,11 +31,11 @@ header{
 
 header.header-tienda{
   position:static;
-  text-decoration: none;
   background: rgb(253, 210, 50);
 }
 
 a.logo{
+  text-decoration: none;
   color: rgb(255, 255, 255);
   text-shadow: 2px 2px 2px black;
   font-size: 30px;
@@ -125,7 +125,8 @@ a.active2,.Header2:hover{
     transition: all .5s;
   }
   ul.ul-tienda{
-    background:rgb(253, 210, 50)
+    background:rgb(253, 210, 50);
+    z-index: 50;
   }
   header ul li{
     display: block;
@@ -312,6 +313,7 @@ a.link2:hover{
 
 .div-filtro{
   position:relative;
+  z-index: 1;
   left:0;
   top:0;
   background-color: rgb(255, 224, 113);
@@ -321,17 +323,25 @@ a.link2:hover{
 }
 
 .grid{
-  box-sizing: border-box;
-
+  margin-left: 40px;
+  margin-right: 40px;
+  margin-bottom: 40px;
+  width:100%;
+  display:grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 440px));
+  grid-auto-rows: minmax(250px, 440px);
+  gap: 40px;
+  grid-column-start: 1;
+  grid-column-end: 2;
 }
 
 .grid-item{
   background-color: rgb(255, 255, 255);
-  box-sizing: border-box;
   display:flex;
   justify-content: center;
   border: 1px solid rgb(85, 85, 85);
 }
+
 .grid-item:hover{
   background-color: rgb(244, 244, 244);
   transition: .3s;
