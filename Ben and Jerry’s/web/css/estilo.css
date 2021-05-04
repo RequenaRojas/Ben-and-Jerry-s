@@ -29,6 +29,12 @@ header{
   justify-content: center;
 }
 
+header.header-tienda{
+  position:static;
+  text-decoration: none;
+  background: rgb(253, 210, 50);
+}
+
 a.logo{
   color: rgb(255, 255, 255);
   text-shadow: 2px 2px 2px black;
@@ -59,8 +65,21 @@ header ul li .Header,.active{
   text-transform: uppercase;
 }
 
+header ul li .Header2,.active2{
+  color: rgb(255, 255, 255);
+  font-size: 17px;
+  padding: 7px 13px;
+  border-radius: 3px;
+  text-transform: uppercase;
+}
+
 a.active,.Header:hover{
   background: rgb(135, 195, 235);
+  transition: .5s;
+}
+
+a.active2,.Header2:hover{
+  background: rgb(255, 224, 113);
   transition: .5s;
 }
 
@@ -86,6 +105,9 @@ a.active,.Header:hover{
   header ul li a{
     font-size: 16px;
   }
+  header ul.ul-tienda li a{
+    font-size: 16px;
+  }
 }
 
 @media (max-width: 858px){
@@ -102,7 +124,15 @@ a.active,.Header:hover{
     text-align: center;
     transition: all .5s;
   }
+  ul.ul-tienda{
+    background:rgb(253, 210, 50)
+  }
   header ul li{
+    display: block;
+    margin: 50px 0;
+    line-height: 30px;
+  }
+  header.header-tienda ul.ul-tienda li{
     display: block;
     margin: 50px 0;
     line-height: 30px;
@@ -110,11 +140,17 @@ a.active,.Header:hover{
   header ul li a.Header{
     font-size: 20px;
   }
-  a:hover,a.active{
+  header ul.ul-tienda li a.Header2{
+    font-size: 20px;
+  }
+  a:hover,a.active,a.active2{
     background: none;
     color: rgb(85, 85, 85);
   }
   #check:checked ~ ul{
+    left: 0;
+  }
+  #check:checked ~ ul.ul-tienda{
     left: 0;
   }
 }
@@ -130,6 +166,12 @@ a.active,.Header:hover{
   flex-wrap: wrap;
   width: 90%;
   max-width: 1000px;
+}
+
+aside{
+  background-color: rgb(255, 224, 113);
+  width:264px;
+  float:left;
 }
 
 .div-promoUno{
@@ -232,6 +274,11 @@ h2{
   cursor: default;
 }
 
+h2.h2-tienda{
+  color: rgb(253, 210, 50);
+  text-align: center;
+}
+
 p.texto{
   color: rgb(85, 85, 85);
   font-size:20px;
@@ -242,13 +289,17 @@ a.link{
   color: rgb(135, 195, 235);
   font-size: 20px;
 }
+a.link2{
+  color: rgb(253, 210, 50);
+}
+
 a.link:hover{
   color: rgb(109, 169, 209);
   transition: .5s;
 }
-
-.espacioBlanco{
-  background-color: green;
+a.link2:hover{
+  color: rgb(255, 224, 113);
+  transition: .5s;
 }
 
 /*FORMULARIO*/
@@ -289,4 +340,8 @@ footer{
   text-align: center;
   padding:10px;
   margin-top: 40px;
+}
+
+footer.footer-tienda{
+  background-color: rgb(253, 210, 50);
 }
