@@ -2,8 +2,12 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Eliminar Usuario</title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Eliminar mi usuario</title>
+        <link rel="stylesheet" href="./css/estilo.css">
+        <link rel="shortcut icon" href="https://www.drodd.com/images16/pastel-blue6.jpg">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"/>
     </head>
     <body>
         <header>
