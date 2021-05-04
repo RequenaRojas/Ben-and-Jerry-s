@@ -104,12 +104,14 @@
 
 
 
-
-
-
-
-
-
-    
+<footer>
+    <p>
+    <br>
+        Integrantes del equipo:
+    <br><br>
+        - Fernández García Gael - Morales de los Santos Jaime Emmanuel - Requena Rojas Moisés Sófocles -
+    <br><br>
+    </p>
+</footer>  
 </body>
 </html>
