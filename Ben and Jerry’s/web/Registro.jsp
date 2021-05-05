@@ -71,7 +71,9 @@
             usu.Usuario(nom_usu, apelPat_usu, apelMat_usu, fechNaci_usu, domi_usu, telePart, teleCelu);
             sql.agregarUsuarioBD(usu);
             
-            if(sql.buscarIdUsuarioBD(nom_usu, apelPat_usu, apelMat_usu)== 0){
+            usu = sql.buscarUsuarioBD(sql.buscarIdUsuarioBD(nom_usu, apelPat_usu, apelMat_usu));
+            
+            if(sql.buscarIdUsuarioBD(nom_usu, apelPat_usu, apelMat_usu)!= 0){
 %>
                 <h2 style="text-align: center;">Ya existe un usuario con el nombre, apellido paterno y materno que acabas de escribir</h2>
 
@@ -95,7 +97,7 @@
                 <br><br>
                     Teléfono celular: <%=usu.getTeleCelu()%>
                     <br><br>
-                    Tu ID de Usuario es: <%= usu.getId(sql)  %>
+                    ID de Usuario: <%=usu.getId(sql)  %>
                 </p>
 
     <%

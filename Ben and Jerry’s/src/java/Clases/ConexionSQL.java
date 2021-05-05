@@ -30,7 +30,7 @@ public class ConexionSQL {
         String userName = "c35th5wrxgf5hvqg";
         String password = "gbkg98qh51iinx0i";
         
-        Class.forName("com.mysql.jdbc.Driver");
+        Class.forName("com.mysql.cj.jdbc.Driver");
 
         con = DriverManager.getConnection(url, userName, password);
         set = con.createStatement();
@@ -97,14 +97,15 @@ public class ConexionSQL {
     
     public void agregarAdmin(int id_usu)
     throws ServletException, IOException, SQLException{
-        Usuario usu = new Usuario();
+        Administrador usu = new Administrador();
         
-        usu = this.buscarUsuarioBD(id_usu);
+        int id_admi = this.buscarIdAdministradorBD(id_usu);
         
-        if (usu.getId(this) != 0){
+        
+        if (id_admi != 0){
             System.out.println("Ya existe este numero");
         }else{
-            String q = "insert into Administrador (id_usu) values ("+usu.getId(this)+") ";
+            String q = "insert into Administrador (id_usu) values ("+id_usu+") ";
 
             set.executeUpdate(q);
        }
@@ -178,12 +179,42 @@ public class ConexionSQL {
         }else{
             
         //Aqui lo creo
-            String p = "insert into Oferta (nom_hela, porc_oferta, id_clas, id_admi)"
-                    + "values ('"+ofer.getNom_ofer()+"', "+ofer.getPorc_ofer()+", "+ofer.getId_clas()+"), "+ofer.getId_admi()+") ";
+            String p = "insert into Oferta (nom_ofer, porc_ofer, id_clas, id_admi)"
+                    + "values ('"+ofer.getNom_ofer()+"', "+ofer.getPorc_ofer()+", "+ofer.getId_clas()+", "+ofer.getId_admi()+") ";
 
             set.executeUpdate(p);
             
         }
+        
+        
+        
+        
+    }
+    
+    public void agregarCarrito(int id_usu, int id_hela)
+     throws ServletException, IOException, SQLException{
+        Usuario usu = new Usuario();
+        Helado hela = new Helado();
+        
+        
+        usu = this.buscarUsuarioBD(id_usu);
+        hela = this.buscarHelado(id_hela);
+        
+        if(usu == null | hela == null){
+            System.out.println("No se encontro el usuario o el helado");
+        }else{
+            
+            String q = "Insert into Carrito (id_usu, id_hela) values ("+id_usu+", "+id_hela+")";
+            
+            set.executeUpdate(q);
+       
+            
+        }
+        
+            
+        
+        
+        
         
         
         
@@ -211,6 +242,42 @@ public class ConexionSQL {
         }
         return id_tele;
                 
+    }
+    
+    public String buscarTelePartBD(int id_tele)
+    throws ServletException, IOException, SQLException{
+        String g = "SELECT * FROM telefono";
+
+        set = con.createStatement();
+        rs = set.executeQuery(g);
+        
+        String telePart = null;
+
+        while(rs.next()){
+                if(id_tele == rs.getInt("id_tele")){
+                    telePart = rs.getString("telePart");
+                }
+        }
+        return telePart;
+        
+    }
+    
+    public String buscarTeleCeluBD(int id_tele)
+    throws ServletException, IOException, SQLException{
+        String g = "SELECT * FROM telefono";
+
+        set = con.createStatement();
+        rs = set.executeQuery(g);
+        
+        String telePart = null;
+
+        while(rs.next()){
+                if(id_tele == rs.getInt("id_tele")){
+                    telePart = rs.getString("teleCelu");
+                }
+        }
+        return telePart;
+        
     }
     
     public int buscarIdUsuarioBD(String nombre, String apelPat, String apelMat)
@@ -244,6 +311,8 @@ public class ConexionSQL {
         set = con.createStatement();
         rs = set.executeQuery(g);
         
+        
+        
         while(rs.next()){
                 if(id_usu == rs.getInt("id_usu")){
                     usu.setNom(rs.getString("nom_usu"));
@@ -252,7 +321,16 @@ public class ConexionSQL {
                     usu.setFechNaci_usu(rs.getString("fechNaci_usu"));
                     usu.setDomi_usu(rs.getString("domi_usu"));
                     usu.setId(rs.getInt("id_usu"));
-                    System.out.println(usu.toString());
+                    usu.setId_tele(rs.getInt("id_tele"));
+                    
+                   int id_tele = rs.getInt("id_tele");
+                    
+                    usu.setTelePart(this.buscarTelePartBD(id_tele));
+                    usu.setTeleCelu(this.buscarTeleCeluBD(id_tele));
+                    return usu;
+                }
+                else{
+                    usu = null;
                 }
         }
         return usu;
@@ -268,8 +346,9 @@ public class ConexionSQL {
         
         int id_admi = 0;
         while(rs.next()){
-                if(id_admi == rs.getInt("id_usu")){
+                if(id_usu == rs.getInt("id_usu")){
                         id_admi = rs.getInt("id_admi");
+                        
                         return id_admi;
                 }
                 
@@ -280,23 +359,29 @@ public class ConexionSQL {
     
     public Administrador buscarAdministradorBD(int id_admi)
     throws ServletException, IOException, SQLException{
-        Administrador usu = new Administrador();
-        
+        Administrador admi = new Administrador();
         String g = "SELECT * FROM Administrador";
 
         set = con.createStatement();
         rs = set.executeQuery(g);
+
+        
         
         while(rs.next()){
                 if(id_admi == rs.getInt("id_admi")){
-                    usu.setId_admi(rs.getInt("id_admi"));
-                    usu.setId(rs.getInt("id_usu"));
+                        admi.setId(id_admi);
+                        admi.setId_usu(rs.getInt("id_usu"));
+                        return admi;
+                }else{
+                    admi=null;
                 }
+                
         }
+        return admi;
         
-        
-        return usu;
     }
+    
+   
     
     public int buscarIdTipoHeladoBD(String nom_tipoHela )
     throws ServletException, IOException, SQLException{
@@ -515,6 +600,9 @@ public class ConexionSQL {
                     usu.setId_clas(rs.getInt("id_clas"));
                     usu.setPrec_hela(rs.getFloat("prec_hela"));
                     usu.setAtributos(rs.getInt("id_clas"), this);
+                    return usu;
+                }else{
+                    usu = null;
                 }
         }
         
@@ -528,7 +616,7 @@ public class ConexionSQL {
     
     public int buscarIdOferta(String nom_ofer)
     throws ServletException, IOException, SQLException{
-        String g = "SELECT * FROM helado";
+        String g = "SELECT * FROM oferta";
 
         set = con.createStatement();
         rs = set.executeQuery(g);
@@ -558,13 +646,56 @@ public class ConexionSQL {
                     ofer.setId_ofer(id_ofer);
                     ofer.setNom_ofer(rs.getString("nom_ofer"));
                     ofer.setPor_ofer(rs.getInt("porc_ofer"));
+                    ofer.setId_clas(rs.getInt("id_clas"));
                     ofer.setId_admi(rs.getInt("id_admi"));
-                    ofer.setId_admi(rs.getInt("id_admi"));
+                    return ofer;
+                }else{
+                    ofer = null;
                 }
         }
         
         
         return ofer;
+    }
+    
+    public int[] buscarCarrito(int id_usu)
+     throws ServletException, IOException, SQLException{
+        
+        //Tendre que sacar la cantidad de veces que el usuario esta en la tabla (i) para establecer un limite de la matriz
+        String g = "SELECT * FROM carrito";
+
+        set = con.createStatement();
+        rs = set.executeQuery(g);
+        int i = 0;
+        
+        while(rs.next()){
+                if(id_usu == rs.getInt("id_usu")){
+                    
+                    i++;
+                }
+        }
+        
+        
+        //Asigno el tamaño de lista con i
+        int id_helados[] = new int[i];
+
+        set = con.createStatement();
+        rs = set.executeQuery(g);
+        //Reinicio la cuenta de i
+        i = 0;
+        
+        while(rs.next()){
+                if(id_usu == rs.getInt("id_usu")){
+                    id_helados[i] = rs.getInt("id_hela");
+                    i++;
+                }
+        }
+        
+        
+        
+        return id_helados;
+        
+        
     }
     
     
@@ -574,7 +705,7 @@ public class ConexionSQL {
         
         
         String p =  "Update telefono set telePart = '"+ usu.getTelePart()+"', teleCelu = '"+usu.getTeleCelu()+"' where id_tele = "+ 
-                    usu.getId_tele(this)+" ";
+                    usu.getId_tele()+" ";
         
         set.executeUpdate(p);
         
@@ -606,11 +737,11 @@ public class ConexionSQL {
         Usuario usu = new Usuario();
         usu = this.buscarUsuarioBD(id_usu);
         
-        String g = "delete from Telefono where id_tele = "+usu.getId_tele(this);
+        String g = "delete from Telefono where id_tele = "+usu.getId_tele();
         set.executeUpdate(g);
         
         
-        
+        System.out.println("Despues de executeUpdate");
         
         String q = "delete from Usuario where id_usu = "+id_usu;
                 
@@ -630,11 +761,23 @@ public class ConexionSQL {
         
     }
     
-    public void eliminarOferta(int id_ofer)throws ServletException, IOException, SQLException{
+    public void eliminarOferta(int id_ofer)
+    throws ServletException, IOException, SQLException{
         
         String q = "delete from Oferta where id_hela = "+id_ofer;
                 
         set.executeUpdate(q);
+        
+    }
+    
+    public void eliminarHeladoCarrito(int id_usu, int id_hela)
+     throws ServletException, IOException, SQLException{
+        
+        String q = "delete from Oferta where id_hela = "+id_hela+", id_usu = "+id_usu+"    ";
+                
+        set.executeUpdate(q);
+        
+        
         
     }
     

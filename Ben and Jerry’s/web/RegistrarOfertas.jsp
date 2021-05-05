@@ -18,8 +18,8 @@
             <a class="logo" href="index.html">Benito y Gerardo</a>
         <ul>
             <li><a class="Header" href="index.html">Inicio</a></li>
-            <li><a class="active" href="Registro.html">Regístrate</a></li>
-            <li><a class="Header" href="Usuario.html">Usuario</a></li>
+            <li><a class="Header" href="Registro.html">Regístrate</a></li>
+            <li><a class="active" href="Usuario.html">Usuario</a></li>
             <li><a class="Header" href="Tienda.html">Tienda</a></li>
         </ul>
         </header>
@@ -31,12 +31,12 @@
     
     //Variables del Usuario
     int id_admin = Integer.parseInt(request.getParameter("id_admin"));
-    String nom_of = request.getParameter("nom_of");
+    String nom_of = request.getParameter("nom_ofer");
     int porc_ofer = Integer.parseInt(request.getParameter("porc_ofer"));
     
     String nom_tipoHela = request.getParameter("nom_tipoHela");
     
-    String tamaño = request.getParameter("Tamaño");
+    String tamaño = request.getParameter("nom_cant");
     
     String nom_pres = request.getParameter("nom_pres");
     
@@ -65,7 +65,7 @@
     
         try{
             //Consigo los id foraneas de Clasificacion
-            
+            System.out.println(nom_tipoHela +" "+ tamaño+" "+nom_pres);
             id_tipoHela = sql.buscarIdTipoHeladoBD(nom_tipoHela);
             
             id_cant = sql.buscarIdCantidadBD(tamaño);
@@ -87,20 +87,23 @@
     <%     
             
             }else{
-
                 id_clas = sql.buscarIdClasificacionBD(id_tipoHela, id_cant , id_pres);
+                System.out.println("despues de buscar el id_clas");
                 
                 //Si no existe la clasificacion entonces creare una
                 if(id_clas == 0){
                     sql.agregarClasificacionBD(id_tipoHela, id_cant, id_pres);
                 }
                 
+
                 id_clas = sql.buscarIdClasificacionBD(id_tipoHela, id_cant , id_pres);
 
+                System.out.println(id_clas);
                 ofer.Oferta(nom_of, porc_ofer);
-                ofer.setId_admi(id_admin);
-                ofer.setId_clas(id_clas);
 
+                ofer.setId_admi(id_admin);
+                System.out.println(id_admin);
+                ofer.setId_clas(id_clas);
                 if(sql.buscarIdOferta(nom_of) != 0){
     %>
                     <h2 style="text-align: center;">Ya existe esta oferta con el mismo nombre</h2>
@@ -108,6 +111,7 @@
     
     <%
                 }else{
+                    System.out.println("Antes de agregar oferta");
                     sql.agregarOferta(ofer);
     %>
                         <h2 style="text-align: center;">Oferta registrado con éxito</h2>
@@ -126,7 +130,7 @@
                         <br><br>
                         Presentación: <%=sql.buscarPresentacionBD(id_pres)  %>
                         <br><br>
-                        El id de la Oferta es: <%= sql.buscarIdOferta(ofer.getNom_ofer()) %>
+                        El id de la oferta es: <%= sql.buscarIdOferta(ofer.getNom_ofer()) %>
                         </p>
     
     <%
@@ -134,11 +138,11 @@
                 }
                 System.out.println("Se ha registrado correctamente la Oferta");    
             }catch(Exception e){
-                    System.out.println("No se ha registrado la Oferta");
+                    System.out.println("No se ha registrado la Oferta, Asegurese de checar su ID de Administrador");
                     System.out.println(e.getMessage());
                     System.out.println(e.getStackTrace());
     %>
-    <h2 style="text-align: center;">No se ha registrado la Oferta</h2>
+    <h2 style="text-align: center;">No se ha registrado la Oferta, Asegurese de checar su ID de Administrador</h2>
     <%
     }
     }catch(Exception e){

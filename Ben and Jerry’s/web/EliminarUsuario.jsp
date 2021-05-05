@@ -45,10 +45,12 @@
         con = sql.getCon();
         set = sql.getSet();
         
+        
+        
         try{
          
             
-        
+            sql.eliminarUsuario(id_usu);
 %>
                 <h2 style="text-align: left;">Se ha eliminado el Usuario con las siguientes características: </h2>
         <p  class="texto" style="text-align: center; margin-top:40px; margin-left: 40px; margin-right: 40px;">
@@ -69,7 +71,7 @@
 
 <%
         
-        sql.eliminarUsuario(id_usu);
+        
         }catch(Exception e){
             System.out.println("No se ha podido Eliminar el Usuario");
  %>

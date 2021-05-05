@@ -14,9 +14,8 @@
     //Variables del Usuario
     int id_usu = Integer.parseInt(request.getParameter("id_usu"));
     int id_admi;
-    //Variables de la conexion 
-    String ip, iph;
-    int puerto, puertoh;
+    
+    
     
     
     try{
@@ -36,7 +35,9 @@
             
             
             Administrador admi = new Administrador();
+            Usuario usu = new Usuario();
             id_admi = sql.buscarIdAdministradorBD(id_usu);
+            System.out.println(id_admi);
             
             if(id_admi != 0){
 %>
@@ -51,29 +52,31 @@
             }else{
           
                 sql.agregarAdmin(id_usu);
+                id_admi = sql.buscarIdAdministradorBD(id_usu);
                 
                 admi = sql.buscarAdministradorBD(id_admi);
+                usu = sql.buscarUsuarioBD(admi.getid_usu());
 %>
                 <h1>Cuenta de Administrador vinculada con exito</h1>
 
                 <br>
                 <br>
-                <label>Nombre: <%=admi.getNom()%> <%=admi.getApelPat_usu()%> <%=admi.getApelMat_usu()%> </label>
+                <label>Nombre: <%=usu.getNom()%> <%=usu.getApelPat_usu()%> <%=usu.getApelMat_usu()%> </label>
                 <br>
                 <br>
-                <label>Tu id de Usuario: <%= sql.buscarIdUsuarioBD(admi.getNom(), admi.getApelPat_usu(), admi.getApelMat_usu()) %></label>
+                <label>Tu id de Usuario: <%= admi.getid_usu() %></label>
                 <br>
                 <br>
-                <label>Tu id de Administrador sera: <%= sql.buscarIdAdministradorBD(id_usu)   %></label>
+                <label>Tu id de Administrador sera: <%= admi.getid_admi()  %></label>
                 <h1>No la olvides!!</h1>
 
 
 
     <%
             }
-            System.out.println("Se ha registrado correctamente el Usuario");    
+            System.out.println("Se ha registrado correctamente al Administrador");    
         }catch(Exception e){
-                System.out.println("No se ha registrado el usuario");
+                System.out.println("No se ha registrado al Administrador");
                 System.out.println(e.getMessage());
                 System.out.println(e.getStackTrace());
 %>

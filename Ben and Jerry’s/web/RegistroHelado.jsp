@@ -86,9 +86,8 @@
                         System.out.println(id_clas);
                         
                         Helado hela = new Helado();
-                        System.out.println("Despues de crear el objeto helado");
+
                         hela.Helado(nom_hela, prec_hela, id_clas);
-        System.out.println("antes de setAtributos");
                         hela.setAtributos(id_clas, sql);
                         if(sql.buscarIdHeladoBD(nom_hela) != 0){
     %>
@@ -113,7 +112,7 @@
                         <br><br>
                         Precio: $<%=hela.getPrec_hela()  %>
                         <br><br>
-                        El id del helado es: <%= hela.getId_hela() %>
+                        El id del helado es: <%= sql.buscarIdHeladoBD(nom_hela) %>
                         </p>
     
     <%

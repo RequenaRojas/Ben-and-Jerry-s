@@ -77,9 +77,21 @@ try{
                 
                 usu.Helado(nom_hela, prec_hela, id_clas);
                 usu.setAtributos(id_clas, sql);
+
                 usu.setId_hela(id_hela);
+
                 usu1 = sql.buscarHelado(id_hela);
-                usu1.setAtributos(id_clas, sql);
+            
+                if(usu1 == null){
+
+%>
+                <h2 style="text-align: center;">El ID no esta registrado ningun helado</h2>
+
+
+<%
+                }else{
+
+
                 sql.editarHelado(id_hela, usu);
 %>
             <h2 style="text-align: center;">El helado con las siguientes características: </h2>
@@ -121,6 +133,7 @@ try{
 <%
         
                 }
+}
             }catch(Exception e){
             System.out.println("No se ha podido modificar el Helado");
                 System.out.println(e.getMessage());

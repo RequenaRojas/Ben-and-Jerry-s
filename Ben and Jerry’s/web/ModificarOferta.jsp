@@ -3,7 +3,7 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Modificar Oferta</title>
+        <title>Modificar oferta</title>
         <link rel="stylesheet" href="./css/estilo.css">
         <link rel="shortcut icon" href="https://www.drodd.com/images16/pastel-blue6.jpg">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
@@ -38,7 +38,10 @@
     String tamaño = (String)request.getParameter("tamano"); 
     String nom_pres = request.getParameter("nom_pres");
     
+    System.out.println(nom_tipoHela+" "+ tamaño +" "+ nom_pres);
+    
     int id_tipoHela, id_cant, id_pres, id_clas;
+    
 try{
      ConexionSQL sql = new ConexionSQL();
         
@@ -85,53 +88,61 @@ try{
                 usu1 = sql.buscarOferta(id_ofer);
                 usu1.setAtributos(id_ofer, sql);
                 
-
                 usu.Oferta(nom_ofer, porc_ofer);
                 usu.setId_admi(usu1.getId_admi());
                 usu.setId_clas(id_clas);
                 usu.setAtributos(id_clas, sql);
-                
+                if(usu1 == null){
+
+                    %>
+                                    <h2 style="text-align: center;">El ID no esta registrado ningun helado</h2>
+
+
+                    <%
+                }else{
 
                 
-                sql.editarOferta(id_ofer, usu);
-%>
-            <h2 style="text-align: center;">El helado con las siguientes características: </h2>
-            <p class="texto" style="text-align: center; margin-top:40px; margin-left: 40px; margin-right: 40px;">
-                        Nombre: <%=usu1.getNom_ofer() %>
-                        <br><br>
-                        Porcentaje de descuento: <%= usu1.getPorc_ofer() %>%
-                        <br><br>
-                        Aplicara con los Helados que tengan como caracteristica:
-                        <br><br>
-                        Tamaño: <%= sql.buscarCantidadBD(clas.getId_cant()) %>
-                        <br><br>
-                        Tipo de helado <%=sql.buscarTipoHeladoBD(clas.getId_tipoHela()) %>
-                        <br><br>
-                        Presentación: <%=sql.buscarPresentacionBD(clas.getId_pres())  %>
-                        <br><br>
-                        El id de la Oferta es: <%= sql.buscarIdOferta(usu1.getNom_ofer()) %>
-                        </p>
                 
-                
-            <h2 style="text-align: center;">Ahora tendra como características: </h2>
-            <p  class="texto" style="text-align: center; margin-top:40px; margin-left: 40px; margin-right: 40px;">
-                Nombre: <%=usu.getNom_ofer() %>
-                        <br><br>
-                        Porcentaje de descuento: <%= usu.getPorc_ofer() %>%
-                        <br><br>
-                        Aplicara con los Helados que tengan como caracteristica:
-                        <br><br>
-                        Tamaño: <%= tamaño%>
-                        <br><br>
-                        Tipo de helado <%=nom_tipoHela %>
-                        <br><br>
-                        Presentación: <%=nom_pres  %>
-                        <br><br>
-                        El id de la Oferta es: <%= id_ofer  %>
-                        </p>
-                
-<%
-        
+                    sql.editarOferta(id_ofer, usu);
+    %>
+                    <h2 style="text-align: center;">El helado con las siguientes características: </h2>
+                    <p class="texto" style="text-align: center; margin-top:40px; margin-left: 40px; margin-right: 40px;">
+                                Nombre: <%=usu1.getNom_ofer() %>
+                                <br><br>
+                                Porcentaje de descuento: <%= usu1.getPorc_ofer() %>%
+                                <br><br>
+                                Aplicara con los Helados que tengan como caracteristica:
+                                <br><br>
+                                Tamaño: <%= sql.buscarCantidadBD(clas.getId_cant()) %>
+                                <br><br>
+                                Tipo de helado <%=sql.buscarTipoHeladoBD(clas.getId_tipoHela()) %>
+                                <br><br>
+                                Presentación: <%=sql.buscarPresentacionBD(clas.getId_pres())  %>
+                                <br><br>
+                                El id de la Oferta es: <%= sql.buscarIdOferta(usu1.getNom_ofer()) %>
+                                </p>
+
+
+                    <h2 style="text-align: center;">Ahora tendra como características: </h2>
+                    <p  class="texto" style="text-align: center; margin-top:40px; margin-left: 40px; margin-right: 40px;">
+                        Nombre: <%=usu.getNom_ofer() %>
+                                <br><br>
+                                Porcentaje de descuento: <%= usu.getPorc_ofer() %>%
+                                <br><br>
+                                Aplicara con los Helados que tengan como caracteristica:
+                                <br><br>
+                                Tamaño: <%= tamaño%>
+                                <br><br>
+                                Tipo de helado <%=nom_tipoHela %>
+                                <br><br>
+                                Presentación: <%=nom_pres  %>
+                                <br><br>
+                                El id de la Oferta es: <%= id_ofer  %>
+                                </p>
+
+    <%
+
+                    }
                 }
             }catch(Exception e){
             System.out.println("No se ha podido modificar el Helado");

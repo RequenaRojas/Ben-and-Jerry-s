@@ -108,9 +108,8 @@ public class Usuario {
         return sql.buscarIdUsuarioBD(this.nom_usu, this.apelPat_usu, this.apelMat_usu);
     }
     
-    public int getId_tele(ConexionSQL sql)
-    throws ServletException, IOException, SQLException{
-        int id_tele = sql.buscarIDTelefonoBD(this.telePart);
+    public int getId_tele(){
+        
         return id_tele;
   }
     

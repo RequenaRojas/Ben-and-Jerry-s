@@ -2,7 +2,7 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Modificar helados</title>
+    <title>Modificar oferta</title>
     <link rel="stylesheet" href="./css/estilo.css">
     <link rel="shortcut icon" href="https://www.drodd.com/images16/pastel-blue6.jpg">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"/>
@@ -23,36 +23,40 @@
     </header>
     <section class="contenedorPrincipal">
         <div class="div-form">
-            <form  onsubmit="" name="formUsu" method="post" action="ModificarHelados.jsp" >  
-                <h2 style="text-align: left;">Llene los datos que desee modificar: </h2>
+            <form  onsubmit="" name="formUsu" method="post" action="ModificarUsuario.jsp" >  
+                <h2 style="text-align: left;">Llene los campos que desee modificar:</h2>
                 <br><br>
-                <label class="nomCam">ID del helado: </label>
+                <label class="nomCam">ID de la oferta: </label>
                 <br>
-                <input class="campo" type="text" name="id_hela"  >
+                <input class="campo" type="text" name="id_ofer" pattern="^([0-9])$" >
                 <br><br>
-                <label class="nomCam">Nombre del helado:</label>
+                <label>Nombre de la oferta: </label>
                 <br>
-                <input class="campo" type="text" name="nom_hela"  pattern="^(?=.{1,10}$)[a-zA-ZáéíóúüñÁÉÍÓÚÑ]+(?:[\s][a-zA-ZáéíóúüñÁÉÍÓÚÑ]+)*$">
+                <input class="campo" type="text" name="nom_ofer" pattern="^(?=.{1,10}$)[a-zA-ZáéíóúüñÁÉÍÓÚÑ]+(?:[\s][a-zA-ZáéíóúüñÁÉÍÓÚÑ]+)*${}" >
                 <br><br>
+                <label class="nomCam">Porcentaje del descuento (%): </label>
+                <br>
+                <input class="campo" type="number" name="porc_ofer" pattern="^([0-9])$">
+                <br>
+                <br>
                 <label class="nomCam">Tipo de helado: </label>
                 <br>
                 <input class="campo" type="text" name="nom_tipoHela" pattern="^(?=.{1,10}$)[a-zA-ZáéíóúüñÁÉÍÓÚÑ]+(?:[\s][a-zA-ZáéíóúüñÁÉÍÓÚÑ]+)*$">
-                <br><br>
-                <label class="nomCam">Tamaño: </label>
+                <br>
+                <br>
+                <label class="nomCam">Tamaño:</label>
                 <br>
                 <input class="campo" type="text" name="tamano" pattern="^(?=.{1,10}$)[a-zA-ZáéíóúüñÁÉÍÓÚÑ]+(?:[\s][a-zA-ZáéíóúüñÁÉÍÓÚÑ]+)*$">
-                <br><br>
-                <label class="nomCam">Presentación: </label>
+                <br>
+                <br>
+                <label class="nomCam">Presentación:</label>
                 <br>
                 <input class="campo" type="text" name="nom_pres" pattern="^(?=.{1,10}$)[a-zA-ZáéíóúüñÁÉÍÓÚÑ]+(?:[\s][a-zA-ZáéíóúüñÁÉÍÓÚÑ]+)*$">
-                <br><br>
-                <label class="nomCam">Precio del helado:</label>
                 <br>
-                <input type="number" name ="pre_hela" step="any" placeholder="1.0" min="1" max="1000"/>
+                <br>
+                <input class="botón" type="submit" value="Enviar datos de registro">
                 <br><br>
-                <input class="botón" type="submit" value="Enviar Datos de Registro">
-                <br><br>
-                <input class="botón" type="reset" value="Borrar Registro">
+                <input class="botón" type="reset" value="Borrar datos de registro">
             </form>
         </div>   
     </section>

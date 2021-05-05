@@ -4,6 +4,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Modificar mis datos</title>
     <link rel="stylesheet" href="./css/estilo.css">
+    <link rel="shortcut icon" href="https://www.drodd.com/images16/pastel-blue6.jpg">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"/>
   </head>
   <body>
@@ -16,7 +17,7 @@
     <ul>
         <li><a class="Header" href="index.html">Inicio</a></li>
         <li><a class="Header" href="Registro.html">Regístrate</a></li>
-        <li><a class="active" href="ModificarU.html">Modificar usuario</a></li>
+        <li><a class="active" href="Usuario.html">Usuario</a></li>
         <li><a class="Header" href="Tienda.html">Tienda</a></li>
     </ul>
     </header>
@@ -27,19 +28,19 @@
                 <br><br>
                 <label class="nomCam">ID de tu Usuario: </label>
                 <br>
-                <input class="campo" type="text" name="id_usu"  >
+                <input class="campo" type="text" name="id_usu"  pattern="\d+">
                 <br><br>
                 <label class="nomCam">Nombre:</label>
                 <br>
-                <input class="campo" type="text" name="nom_usu"  >
+                <input class="campo" type="text" name="nom_usu"  pattern="^(?=.{1,10}$)[a-zA-ZáéíóúüñÁÉÍÓÚÑ]+(?:[\s][a-zA-ZáéíóúüñÁÉÍÓÚÑ]+)*$"  >
                 <br><br>
                 <label class="nomCam">Apellido paterno:</label>
                 <br>
-                <input class="campo" type="text" name="apelPat_usu"  >
+                <input class="campo" type="text" name="apelPat_usu"   pattern="^(?=.{1,10}$)[a-zA-ZáéíóúüñÁÉÍÓÚÑ]+(?:[\s][a-zA-ZáéíóúüñÁÉÍÓÚÑ]+)*$">
                 <br><br>
                 <label class="nomCam">Apellido materno:</label>
                 <br>
-                <input class="campo" type="text" name="apelMat_usu"  >
+                <input class="campo" type="text" name="apelMat_usu"  pattern="^(?=.{1,10}$)[a-zA-ZáéíóúüñÁÉÍÓÚÑ]+(?:[\s][a-zA-ZáéíóúüñÁÉÍÓÚÑ]+)*$" >
                 <br><br>
                 <label class="nomCam">Fecha de nacimiento:</label>
                 <br>
@@ -47,15 +48,15 @@
                 <br><br>
                 <label class="nomCam">Domicilio: </label>
                 <br>
-                <input class="campo" type="text" name="domi_usu"  >
+                <input class="campo" type="text" name="domi_usu"  pattern="^(?=.{1,10}$)[a-zA-ZáéíóúüñÁÉÍÓÚÑ]+(?:[\s][a-zA-ZáéíóúüñÁÉÍÓÚÑ]+)*$">
                 <br><br>
                 <label class="nomCam">Teléfono celular: </label>
                 <br>
-                <input class="campo" type="tel" name="teleCelu"  >
+                <input class="campo" type="tel" name="teleCelu"  pattern="^ \ (? (\ d {3}) )? [-]? (\ d {3}) [-]? (\ d {4}) $" >
                 <br><br>
                 <label class="nomCam">Teléfono particular: </label>
                 <br>
-                <input class="campo" type="tel" name="telaPart"  >
+                <input class="campo" type="tel" name="telaPart"  pattern="^ \ (? (\ d {3}) )? [-]? (\ d {3}) [-]? (\ d {4}) $" >
                 <br>
                 <br>
                 <input class="botón" type="submit" value="Enviar datos de registro">

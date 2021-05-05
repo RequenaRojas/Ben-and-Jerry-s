@@ -3,7 +3,7 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Eliminar Oferta</title>
+        <title>Eliminar oferta</title>
     </head>
     <body>
         <header>
@@ -58,7 +58,7 @@
             
         
 %>
-                <h2 style="text-align: left;">Se ha eliminado la Oferta con las siguientes características: </h2>
+                <h2 style="text-align: left;">Se ha eliminado la oferta con las siguientes características: </h2>
         <p  class="texto" style="text-align: center; margin-top:40px; margin-left: 40px; margin-right: 40px;">
                 Nombre: <%=usu1.getNom_ofer() %> 
                 <br><br>
@@ -74,7 +74,6 @@
                 <br><br>
                 Presentacion: <%=clas.getNom_pres() %>
                 <br><br>
-                <br><br>
         </p>
                
 
@@ -82,11 +81,13 @@
 
 <%
         
-        sql.eliminarOferta(id_ofer);
+        String q = "delete from Oferta where id_hela = "+id_ofer;
+                
+        set.executeUpdate(q);
         }catch(Exception e){
             System.out.println("No se ha podido Eliminar el Usuario");
  %>
-                <h2 style="text-align:center">El Usuario no se ha podido eliminar, asegurese de escribir un ID existente</h2>
+                <h2 style="text-align:center">El usuario no se ha podido eliminar, asegurese de escribir un ID existente</h2>
 <%   
         }
         
