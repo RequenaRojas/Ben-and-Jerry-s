@@ -167,6 +167,7 @@ a.active2,.Header2:hover{
   flex-wrap: wrap;
   width: 90%;
   max-width: 1000px;
+  justify-content: center;
 }
 
 aside{
@@ -177,10 +178,9 @@ aside{
 
 .div-promoUno{
   display:flex;
-  align-items:center;
   text-align: center;
   background-image: url("https://image.freepik.com/free-vector/ice-cream-set_74855-975.jpg");
-  width:656px;
+  width: 656px;
   height:232px;
   border:15px solid rgb(250, 160, 240);
   margin-top: 40px;
