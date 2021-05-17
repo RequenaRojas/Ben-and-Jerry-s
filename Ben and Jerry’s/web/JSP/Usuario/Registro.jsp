@@ -49,7 +49,7 @@
         
         ConexionSQL sql = new ConexionSQL();
         
-        sql.init(con, set);
+        sql.init();
         
         con = sql.getCon();
         set = sql.getSet();

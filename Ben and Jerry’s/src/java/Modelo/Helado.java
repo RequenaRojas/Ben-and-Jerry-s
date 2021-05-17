@@ -1,6 +1,5 @@
-package Clases;
+package Modelo;
 
-import Clases.Clasificacion;
 import java.io.IOException;
 import java.util.Date;
 

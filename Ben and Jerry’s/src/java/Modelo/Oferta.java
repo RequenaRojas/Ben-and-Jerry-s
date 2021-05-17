@@ -1,5 +1,6 @@
-package Clases;
+package Modelo;
 
+import Controlador.ConexionSQL;
 import java.io.IOException;
 import java.util.Date;
 

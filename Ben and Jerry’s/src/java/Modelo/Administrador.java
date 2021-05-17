@@ -1,8 +1,8 @@
-package Clases;
+package Modelo;
 
 
-import Clases.ConexionSQL;
-import Clases.Usuario;
+import Controlador.ConexionSQL;
+import Modelo.Usuario;
 
 
 public class Administrador extends Usuario {

@@ -1,6 +1,7 @@
-package Clases;
+package Modelo;
 
 
+import Controlador.ConexionSQL;
 import java.io.IOException;
 import java.util.Date;
 
@@ -102,11 +103,11 @@ public class Usuario {
         this.id_tele = id;
     }
     
-    //Necesito conectarme a la BD
-    public int getId(ConexionSQL sql)
-    throws ServletException, IOException, SQLException{
-        return sql.buscarIdUsuarioBD(this.nom_usu, this.apelPat_usu, this.apelMat_usu);
-    }
+
+    public int getId()
+    {
+        return id_usu;
+        }
     
     public int getId_tele(){
         

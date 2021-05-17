@@ -1,5 +1,9 @@
-package Clases;
-import Clases.*;
+package Controlador;
+import Modelo.Administrador;
+import Modelo.Clasificacion;
+import Modelo.Helado;
+import Modelo.Oferta;
+import Modelo.Usuario;
 
 //Encargada de poder realizar la conexión con la BD
 import java.io.IOException;
@@ -14,86 +18,27 @@ import javax.servlet.ServletConfig;
 import javax.servlet.ServletException;
 
 public class ConexionSQL {
-    private Connection con;
-    private Statement set;
-    private ResultSet rs;
     
-    
-    
-    public void ConexionSQL(){}
-    public void init(Connection con, Statement set)
+    public static Connection getConnection()
     throws ServletException, ClassNotFoundException, SQLException{
-        
-        Class.forName("com.mysql.jdbc.Driver");
         
         String url = "jdbc:mysql://wcwimj6zu5aaddlj.cbetxkdyhwsb.us-east-1.rds.amazonaws.com:3306/qb9w2pzeh1k667p7";
         String userName = "c35th5wrxgf5hvqg";
         String password = "gbkg98qh51iinx0i";
         
+        Connection con = null;
+        
         Class.forName("com.mysql.cj.jdbc.Driver");
-
         con = DriverManager.getConnection(url, userName, password);
-        set = con.createStatement();
-        
-        setCon(con);
-        setSET(set);
-        
-    }
-    
-    public Connection getCon(){
+        System.out.println("Conexion exitosa con la BD");
         return con;
-    }
-    public Statement getSet(){
-        return set;
-    }
-    public ResultSet getRs(){
-        return rs;
-    }
-    
-    public void setCon(Connection con){
-        this.con = con;
-    }
-    public void setSET(Statement set){
-        this.set = set;
-    }
-    public void setRS(ResultSet rs){
-        this.rs = rs;
-    }
-    
-    public void agregarUsuarioBD(Usuario usu)
-    throws ServletException, IOException, SQLException{
         
-        //Filtro que no haya nombres, apellidos y numeros  repetidos
-        if(this.buscarIdUsuarioBD(usu.getNom(), usu.getApelPat_usu(), usu.getApelMat_usu()) != 0 ){
-        }else{
-            
-            if(this.buscarIDTelefonoBD(usu.getTelePart()) != 0 | this.buscarIDTelefonoBD(usu.getTeleCelu()) != 0 ){
-                
-            }else{
-                
-                //Aqui lo creo
-                this.agregarTelefonoBD(usu.getTelePart(), usu.getTeleCelu());
-
-                String p = "insert into Usuario (nom_usu, apelPat_usu, apelMat_usu, fechNaci_usu, domi_usu,id_tele )"
-                        + "values ('"+usu.getNom()+"','"+usu.getApelPat_usu()+"','"+usu.getApelMat_usu()+"', '"
-                         +usu.getfechNaci_usu()+"','"+usu.getDomi_usu()+"', "+this.buscarIDTelefonoBD(usu.getTelePart())+")";
-
-                set.executeUpdate(p);
-            }
-        }
     }
     
     
-    private void agregarTelefonoBD(String telePart_usu, String teleCelu_usu)
-    throws ServletException, IOException, SQLException{
-        
-        if (this.buscarIDTelefonoBD(teleCelu_usu) == 0 && this.buscarIDTelefonoBD(telePart_usu) == 0){
-            String q = "insert into telefono (telePart, teleCelu) values ('"+telePart_usu+"', '"+teleCelu_usu+"')";
-            set.executeUpdate(q);
-        }else{
-            System.out.println("Ya existe este numero");
-       }
-    }
+    
+    
+    
     
     public void agregarAdmin(int id_usu)
     throws ServletException, IOException, SQLException{
@@ -280,62 +225,7 @@ public class ConexionSQL {
         
     }
     
-    public int buscarIdUsuarioBD(String nombre, String apelPat, String apelMat)
-    throws ServletException, IOException, SQLException{
-        String g = "SELECT * FROM usuario";
-
-        set = con.createStatement();
-        rs = set.executeQuery(g);
-
-        
-        int id_usu = 0;
-        while(rs.next()){
-                if(nombre.equalsIgnoreCase(rs.getString("nom_usu")) == true && 
-                    apelPat.equalsIgnoreCase(rs.getString("apelPat_usu")) == true &&
-                    apelMat.equalsIgnoreCase(rs.getString("apelMat_usu")) == true ){
-                        id_usu = rs.getInt("id_usu");
-                        return id_usu;
-                }
-                
-        }
-        return id_usu;
-                
-    }
-    
-    public Usuario buscarUsuarioBD(int id_usu)
-    throws ServletException, IOException, SQLException{
-        Usuario usu = new Usuario();
-        
-        String g = "SELECT * FROM Usuario";
-
-        set = con.createStatement();
-        rs = set.executeQuery(g);
-        
-        
-        
-        while(rs.next()){
-                if(id_usu == rs.getInt("id_usu")){
-                    usu.setNom(rs.getString("nom_usu"));
-                    usu.setApelPat_usu(rs.getString("apelPat_usu"));
-                    usu.setApelMat_usu(rs.getString("apelMat_usu"));
-                    usu.setFechNaci_usu(rs.getString("fechNaci_usu"));
-                    usu.setDomi_usu(rs.getString("domi_usu"));
-                    usu.setId(rs.getInt("id_usu"));
-                    usu.setId_tele(rs.getInt("id_tele"));
-                    
-                   int id_tele = rs.getInt("id_tele");
-                    
-                    usu.setTelePart(this.buscarTelePartBD(id_tele));
-                    usu.setTeleCelu(this.buscarTeleCeluBD(id_tele));
-                    return usu;
-                }
-                else{
-                    usu = null;
-                }
-        }
-        return usu;
-    }
-    
+   
     public int buscarIdAdministradorBD(int id_usu)
     throws ServletException, IOException, SQLException{
         String g = "SELECT * FROM Administrador";
@@ -700,20 +590,6 @@ public class ConexionSQL {
     
     
     //Editar Datos de una fila
-    public void editarUsuario(int id_usu, Usuario usu)
-     throws ServletException, IOException, SQLException{
-        
-        
-        String p =  "Update telefono set telePart = '"+ usu.getTelePart()+"', teleCelu = '"+usu.getTeleCelu()+"' where id_tele = "+ 
-                    usu.getId_tele()+" ";
-        
-        set.executeUpdate(p);
-        
-         String q = "update Usuario set nom_usu='"+usu.nom_usu+"', apelPat_usu='"+usu.getApelPat_usu()+"', apelMat_usu='"+usu.getApelMat_usu()+"'"
-                        + ", fechNaci_usu='"+usu.getfechNaci_usu()+"', domi_usu='"+usu.getDomi_usu()+"' where id_usu = "+id_usu+"  ";
-        
-        set.executeUpdate(q);
-    }
     
     public void editarHelado(int id_hela, Helado usu)
      throws ServletException, IOException, SQLException{
@@ -731,24 +607,6 @@ public class ConexionSQL {
     }
    
     //Eliminar Datos
-    public void eliminarUsuario(int id_usu)
-    throws ServletException, IOException, SQLException{
-        
-        Usuario usu = new Usuario();
-        usu = this.buscarUsuarioBD(id_usu);
-        
-        String g = "delete from Telefono where id_tele = "+usu.getId_tele();
-        set.executeUpdate(g);
-        
-        
-        System.out.println("Despues de executeUpdate");
-        
-        String q = "delete from Usuario where id_usu = "+id_usu;
-                
-        set.executeUpdate(q);
-        System.out.println("Registro eliminado con exito");
-        
-    } 
     
     public void eliminarHelado(int id_hela)
     throws ServletException, IOException, SQLException{
