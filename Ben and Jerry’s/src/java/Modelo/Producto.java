@@ -1,5 +1,6 @@
 package Modelo;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 
 /**
@@ -7,12 +8,21 @@ import java.util.HashMap;
  * @author sofo9
  */
 public class Producto {
-    int id_producto;
-    String sabor;
-    HashMap<String, Integer> descuento;
-    HashMap<String, Integer> cantidad;
-    String tamano;
-    String presentacion;
+    private int id_producto;
+    private String sabor;
+    private ArrayList descuento;
+    private ArrayList cantidad;
+    private String tamano;
+    private String presentacion;
+    Float precio;
+
+    public Float getPrecio() {
+        return precio;
+    }
+
+    public void setPrecio(Float precio) {
+        this.precio = precio;
+    }
 
     public int getId_producto() {
         return id_producto;
@@ -30,19 +40,19 @@ public class Producto {
         this.sabor = sabor;
     }
 
-    public HashMap<String, Integer> getDescuento() {
+    public ArrayList getDescuento() {
         return descuento;
     }
 
-    public void setDescuento(HashMap<String, Integer> descuento) {
+    public void setDescuento(ArrayList descuento) {
         this.descuento = descuento;
     }
 
-    public HashMap<String, Integer> getCantidad() {
+    public ArrayList getCantidad() {
         return cantidad;
     }
 
-    public void setCantidad(HashMap<String, Integer> cantidad) {
+    public void setCantidad(ArrayList cantidad) {
         this.cantidad = cantidad;
     }
 

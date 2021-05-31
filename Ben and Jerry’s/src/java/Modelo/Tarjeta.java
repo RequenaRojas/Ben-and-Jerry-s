@@ -8,7 +8,7 @@ import java.util.Date;
  */
 public class Tarjeta {
     int id_tarjeta;
-    String nombre_tarjeta;
+    String nombre_titular;
     int num_tarjeta;
     Date fecha_exp;
     int cod_seguridad;
@@ -23,12 +23,12 @@ public class Tarjeta {
         this.id_tarjeta = id_tarjeta;
     }
 
-    public String getNombre_tarjeta() {
-        return nombre_tarjeta;
+    public String getNombre_titular() {
+        return nombre_titular;
     }
 
-    public void setNombre_tarjeta(String nombre_tarjeta) {
-        this.nombre_tarjeta = nombre_tarjeta;
+    public void setNombre_titular(String nombre_titular) {
+        this.nombre_titular = nombre_titular;
     }
 
     public int getNum_tarjeta() {

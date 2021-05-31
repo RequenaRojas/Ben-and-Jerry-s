@@ -11,7 +11,7 @@ public class Dirrecion {
     int num_int_dirrec;
     String alcaldia;
     String colonia;
-    int cp_colonia;
+    String cp_colonia;
 
     public int getId_dirrec() {
         return id_dirrec;
@@ -61,11 +61,11 @@ public class Dirrecion {
         this.colonia = colonia;
     }
 
-    public int getCp_colonia() {
+    public String getCp_colonia() {
         return cp_colonia;
     }
 
-    public void setCp_colonia(int cp_colonia) {
+    public void setCp_colonia(String cp_colonia) {
         this.cp_colonia = cp_colonia;
     }
     

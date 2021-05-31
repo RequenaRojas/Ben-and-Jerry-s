@@ -10,10 +10,32 @@ import java.util.List;
  */
 public class Compra {
     int id_compra;
+    int id_usuario;
     Date fecha_compra;
     float total_compra;
     String formapago;
-    HashMap<Producto, int[]> productos;
+    //Producto[0] y cantidadYSubtotal[1]
+    //En  cantidadYSubtotal, cantidad[0] y subtotal[1]
+    HashMap<Producto, float[]> productos;
+    Boolean completado;
+
+    public int getId_usuario() {
+        return id_usuario;
+    }
+
+    public void setId_usuario(int id_usuario) {
+        this.id_usuario = id_usuario;
+    }
+
+    public Boolean getCompletado() {
+        return completado;
+    }
+
+    public void setCompletado(Boolean completado) {
+        this.completado = completado;
+    }
+    
+    
 
     public int getId_compra() {
         return id_compra;
@@ -47,11 +69,11 @@ public class Compra {
         this.formapago = formapago;
     }
 
-    public HashMap<Producto, int[]> getProductos() {
+    public HashMap<Producto, float[]> getProductos() {
         return productos;
     }
 
-    public void setProductos(HashMap<Producto, int[]> productos) {
+    public void setProductos(HashMap<Producto, float[]> productos) {
         this.productos = productos;
     }
     
