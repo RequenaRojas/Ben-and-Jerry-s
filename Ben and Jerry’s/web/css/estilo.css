@@ -305,6 +305,12 @@ a.link2:hover{
   margin-bottom:40px;
 }
 
+.campo-tienda{
+  margin:10px;
+  text-align: center;
+  padding: 3px;
+}
+
 /*TIENDA*/
 
 .grid{

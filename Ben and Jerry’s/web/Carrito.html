@@ -21,12 +21,58 @@
         <li><a class="Header2" href="index.html">Regresar</a></li>
     </ul>
     </header>
-    <section class="contenedorPrincipal">
-        
-        <h2 class="h2-tienda">Carrito en construcción</h2>
-
+    <section class="contenedorPrincipal" style="width: 50%;">
+        <div class="div-form">
+            <form style="text-align: center;" onsubmit="" name="formUsu" method="post" action="Registro.jsp" >  
+                <h2 class="h2-tienda">Por favor, ingrese los productos que desee comprar:</h2>
+                <br><br>
+                <label class="nomCam">Sabor:</label>
+                <br>
+                <select class="campo-tienda">                                         
+                    <option value="0">Seleccionar sabor</option>
+                    <option value="1">Vainilla</option>
+                    <option value="2">Fresa</option>
+                    <option value="3">Chocolate</option>
+                    <option value="4">Napolitano</option>
+                    <option value="5">Limón</option>
+                    <option value="6">Naranja</option>
+                </select>
+                <br><br><br>
+                <label class="nomCam">Descuento:</label>
+                <br>
+                <input class="campo-tienda" type="text" size="5" name="">
+                <br><br><br>
+                <label class="nomCam">Cantidad:</label>
+                <br>
+                <input class="campo-tienda" type="text" size="5" name="">
+                <br><br><br>
+                <label class="nomCam">Tamaño:</label>
+                <br>
+                <select class="campo-tienda">                                         
+                    <option value="0">Seleccionar tamaño</option>
+                    <option value="1">Chico</option>
+                    <option value="2">Mediano</option>
+                    <option value="3">Grande</option>
+                </select>
+                <br><br><br>
+                <label class="nomCam">Presentación: </label>
+                <br>
+                <select class="campo-tienda">                                         
+                    <option value="0">Seleccionar presentación</option>
+                    <option value="1">Cono</option>
+                    <option value="2">Vaso</option>
+                    <option value="3">Cubeta</option>
+                </select>
+                <br><br><br>
+                <input class="botón2" type="submit" value="Continuar" style="width:200px;">
+                <br><br><br>
+                <input class="botón2" type="reset" value="Vaciar carrito" style="width:200px;">
+            </form>
+        </div>   
+        <div style="display:flex; justify-content: center; padding:20px;">
+            <img src="https://opco.co.ir/themes/opcostore/image/shoppingicon.png" style="width: 100%; height: 100%; object-fit: cover;">
+        </div>
     </section>
-
     <footer class="footer-tienda">
         <p>
         <br>
