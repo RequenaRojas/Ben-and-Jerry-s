@@ -1,12 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <web-app version="3.1" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd">
+   
     <servlet>
-        <servlet-name>guardarUsuario</servlet-name>
-        <servlet-class>Servlets.guardarUsuario</servlet-class>
+        <servlet-name>IniciarAdmin</servlet-name>
+        <servlet-class>Servlets.IniciarAdmin</servlet-class>
     </servlet>
     <servlet-mapping>
-        <servlet-name>guardarUsuario</servlet-name>
-        <url-pattern>/guardarUsuario</url-pattern>
+        <servlet-name>IniciarAdmin</servlet-name>
+        <url-pattern>/IniciarAdmin</url-pattern>
+    </servlet-mapping>
+    <servlet>
+        <servlet-name>DarAlta</servlet-name>
+        <servlet-class>Servlets.DarAlta</servlet-class>
+    </servlet>
+    
+    
+    <servlet-mapping>
+        <servlet-name>DarAlta</servlet-name>
+        <url-pattern>/DarAlta</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

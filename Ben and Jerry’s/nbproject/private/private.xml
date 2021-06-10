@@ -3,8 +3,14 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/sofo9/OneDrive/D.%20Word/Codigos/NetBeansProjects/BEN%20AND%20JERRY’S/Ben%20and%20Jerry’s/web/JSP/Usuario/Registro.jsp</file>
-            <file>file:/C:/Users/sofo9/OneDrive/D.%20Word/Codigos/NetBeansProjects/BEN%20AND%20JERRY’S/Ben%20and%20Jerry’s/web/Registro.html</file>
+            <file>file:/C:/Users/sofo9/OneDrive/D.%20Word/Codigos/NetBeansProjects/BEN%20AND%20JERRY’S/Ben%20and%20Jerry’s/web/JSP/Admin/IniciarSesion.jsp</file>
+            <file>file:/C:/Users/sofo9/OneDrive/D.%20Word/Codigos/NetBeansProjects/BEN%20AND%20JERRY’S/Ben%20and%20Jerry’s/src/java/Servlets/IniciarAdmin.java</file>
+            <file>file:/C:/Users/sofo9/OneDrive/D.%20Word/Codigos/NetBeansProjects/BEN%20AND%20JERRY’S/Ben%20and%20Jerry’s/web/JSP/Admin/InicioAdministrador.jsp</file>
+            <file>file:/C:/Users/sofo9/OneDrive/D.%20Word/Codigos/NetBeansProjects/BEN%20AND%20JERRY’S/Ben%20and%20Jerry’s/web/JSP/Admin/EditarProdu.jsp</file>
+            <file>file:/C:/Users/sofo9/OneDrive/D.%20Word/Codigos/NetBeansProjects/BEN%20AND%20JERRY’S/Ben%20and%20Jerry’s/web/JSP/Admin/RegistrarAdmin.jsp</file>
+            <file>file:/C:/Users/sofo9/OneDrive/D.%20Word/Codigos/NetBeansProjects/BEN%20AND%20JERRY’S/Ben%20and%20Jerry’s/src/java/Servlets/DarAlta.java</file>
+            <file>file:/C:/Users/sofo9/OneDrive/D.%20Word/Codigos/NetBeansProjects/BEN%20AND%20JERRY’S/Ben%20and%20Jerry’s/src/java/Modelo/Usuario.java</file>
+            <file>file:/C:/Users/sofo9/OneDrive/D.%20Word/Codigos/NetBeansProjects/BEN%20AND%20JERRY’S/Ben%20and%20Jerry’s/web/JSP/Admin/RegistrarProdu.jsp</file>
         </group>
     </open-files>
 </project-private>

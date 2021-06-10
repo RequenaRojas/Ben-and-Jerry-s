@@ -1,0 +1,425 @@
+*{
+    padding: 0;
+    margin: 0;
+    text-decoration: none;
+    list-style: none;
+    box-sizing: border-box;
+  }
+  
+  body{
+    font-family: 'Source Sans Pro', Helvetica, Arial, sans-serif;
+    background-color: rgb(244, 244, 244);
+  }
+  
+  /*HEADER*/
+  
+  header{
+    position:sticky;
+    z-index: 100;
+    top:0;
+    left:0;
+    align-items: center;
+    background: rgb(2, 151, 35);
+    height: 80px;
+    width: 100%;
+    display:flex;
+    flex-wrap: wrap;
+    align-items: center;
+    flex-direction:column;
+    justify-content: center;
+  }
+  
+  header.header-tienda{
+    position:static;
+    background: rgb(253, 210, 50);
+  }
+  
+  a.logo{
+    text-decoration: none;
+    color: rgb(255, 255, 255);
+    text-shadow: 2px 2px 2px black;
+    font-size: 30px;
+    font-weight: 900;
+    text-transform: uppercase;
+    letter-spacing: 0.3px;
+    margin:20px;
+    text-align: center;
+  }
+  
+  header ul{
+    float: right;
+    margin-right: 20px;
+  }
+  
+  header ul li{
+    display: inline-block;
+    line-height: 80px;
+    margin: 0 5px;
+  }
+  
+  header ul li .Header,.active{
+    color: rgb(255, 255, 255);
+    font-size: 17px;
+    padding: 7px 13px;
+    border-radius: 3px;
+    text-transform: uppercase;
+  }
+  
+  header ul li .Header2,.active2{
+    color: rgb(255, 255, 255);
+    font-size: 17px;
+    padding: 7px 13px;
+    border-radius: 3px;
+    text-transform: uppercase;
+  }
+  
+  a.active,.Header:hover{
+    background: rgb(12, 66, 24);
+    transition: .5s;
+  }
+  
+  a.active2,.Header2:hover{
+    background: rgb(255, 224, 113);
+    transition: .5s;
+  }
+  
+  .checkbtn{
+    font-size: 30px;
+    color: rgb(255, 255, 255);
+    float: right;
+    line-height: 80px;
+    margin-right: 40px;
+    cursor: pointer;
+    display: none;
+  }
+  
+  #check{
+    display: none;
+  }
+  
+  @media (max-width: 952px){
+    label.logo{
+      font-size: 30px;
+      padding-left: 50px;
+    }
+    header ul li a{
+      font-size: 16px;
+    }
+    header ul.ul-tienda li a{
+      font-size: 16px;
+    }
+  }
+  
+  @media (max-width: 858px){
+    .checkbtn{
+      display: block;
+    }
+    ul{
+      position: fixed;
+      width: 100%;
+      height: 100vh;
+      background: rgb(12, 66, 24);
+      top: 80px;
+      left: -100%;
+      text-align: center;
+      transition: all .5s;
+    }
+    ul.ul-tienda{
+      background:rgb(253, 210, 50);
+      z-index: 50;
+    }
+    header ul li{
+      display: block;
+      margin: 50px 0;
+      line-height: 30px;
+    }
+    header.header-tienda ul.ul-tienda li{
+      display: block;
+      margin: 50px 0;
+      line-height: 30px;
+    }
+    header ul li a.Header{
+      font-size: 20px;
+    }
+    header ul.ul-tienda li a.Header2{
+      font-size: 20px;
+    }
+    a:hover,a.active,a.active2{
+      background: none;
+      color: rgb(85, 85, 85);
+    }
+    #check:checked ~ ul{
+      left: 0;
+    }
+    #check:checked ~ ul.ul-tienda{
+      left: 0;
+    }
+  }
+  
+  /*CONTENIDOS*/
+  
+  .contenedorPrincipal{
+    background: rgb(255, 255, 255);
+    display: flex;
+    justify-content: center;
+    margin: auto;
+    margin-top:40px;
+    flex-wrap: wrap;
+    width: 90%;
+    max-width: 1000px;
+    justify-content: center;
+  }
+  
+  aside{
+    background-color: rgb(255, 224, 113);
+    width:264px;
+    float:left;
+  }
+  
+  .div-promoUno{
+    display:flex;
+    text-align: center;
+    background-image: url("https://image.freepik.com/free-vector/ice-cream-set_74855-975.jpg");
+    width: 656px;
+    height:232px;
+    border:15px solid rgb(250, 160, 240);
+    margin-top: 40px;
+    margin-left: 40px;
+    margin-right: 40px;
+  }
+  
+  .div-promoDos{
+    display:flex;
+    align-items:center;
+    text-align: center;
+    background-image: url("https://image.freepik.com/free-photo/ice-cream-with-mixed-fruit_1339-4925.jpg");
+    width:656px;
+    height:232px;
+    border:15px solid rgb(250, 230, 160);;
+    margin-top: 40px;
+    margin-left: 40px;
+    margin-right: 40px;
+  }
+  
+  .div-promoTres{
+    display:flex;
+    align-items:center;
+    text-align: center;
+    background-image: url("https://image.freepik.com/free-photo/various-ice-cream-flavor-ball-isolate-white-background_35641-3052.jpg");
+    width:656px;
+    height:232px;
+    border:15px solid rgb(180, 250, 160);
+    margin-top: 40px;
+    margin-left: 40px;
+    margin-right: 40px;
+    margin-bottom: 40px;
+  }
+  
+  p.PromoUno{
+    margin: auto;
+    color: rgb(250, 160, 240);
+    text-shadow: 2px 2px 2px black;
+    font-size: 1.3rem;
+    font-weight: 900;
+    text-transform: uppercase;
+    letter-spacing: 0.3px;
+  }
+  
+  p.PromoDos{
+    margin: auto;
+    color: rgb(250, 230, 160);
+    text-shadow: 2px 2px 2px black;
+    font-size: 1.3rem;
+    font-weight: 900;
+    text-transform: uppercase;
+    letter-spacing: 0.3px;
+  }
+  
+  p.PromoTres{
+    margin: auto;
+    color: rgb(180, 250, 160);
+    text-shadow: 2px 2px 2px black;
+    font-size: 1.3rem;
+    font-weight: 900;
+    text-transform: uppercase;
+    letter-spacing: 0.3px;
+  }
+  
+  .div-promoUno:hover{
+    border: 15px solid rgb(255, 113, 238);
+    transition: .5s;
+  }
+  .div-promoDos:hover{
+    border: 15px solid rgb(255, 224, 113);
+    transition: .5s;
+  }
+  .div-promoTres:hover{
+    border: 15px solid rgb(142, 255, 111);
+    transition: .5s;
+  }
+  
+  a.linkPromo{
+    text-decoration: none;
+  }
+  
+  h2{
+    color: rgb(2, 151, 35);
+    text-shadow: 2px 2px 2px black;
+    font-size: 1.5rem;
+    font-weight: 900;
+    text-transform: uppercase;
+    letter-spacing: 0.3px;
+    margin-top:40px;
+    margin-left: 40px;
+    margin-right: 40px;
+    cursor: default;
+  }
+  
+  h2.h2-tienda{
+    color: rgb(253, 210, 50);
+    text-align: center;
+  }
+  
+  p.texto{
+    color: rgb(85, 85, 85);
+    font-size:20px;
+  }
+  
+  a.link{
+    text-decoration: none;
+    color: rgb(12, 66, 24);
+    font-size: 20px;
+  }
+  a.link2{
+    color: rgb(253, 210, 50);
+  }
+  
+  a.link:hover{
+    color: rgb(2, 151, 35);
+    transition: .5s;
+  }
+  a.link2:hover{
+    color: rgb(255, 224, 113);
+    transition: .5s;
+  }
+  
+  /*FORMULARIO*/
+  
+  .div-form{
+    margin-left: 40px;
+    margin-right: 40px;
+    margin-bottom:40px;
+  }
+  
+  .div-filtro{
+    position:relative;
+    z-index: 1;
+    left:0;
+    top:0;
+    background-color: rgb(255, 224, 113);
+    width:100%;
+    height: minmax(330px, 600px);
+    margin-bottom:40px;
+    display: flex;
+      flex-flow: row wrap;
+      justify-content: center;
+  }
+  
+  .div-columna{
+    flex: 1;
+      margin: 2px;
+      padding: 10px;
+  }
+  
+  @media screen and (max-width: 980px) {
+    .div-filtro .div-columna {
+          margin-bottom: 5px;
+      flex-basis: 40%;
+      }
+  }
+  
+  @media screen and (max-width: 680px) {
+      .div-filtro .div-columna {
+          flex-basis: 100%;
+          margin: 0 0 5px 0;
+      }
+  }
+  
+  .grid{
+    margin-left: 40px;
+    margin-right: 40px;
+    margin-bottom: 40px;
+    width:100%;
+    display:grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 440px));
+    grid-auto-rows: minmax(250px, 440px);
+    gap: 40px;
+    grid-column-start: 1;
+    grid-column-end: 2;
+    justify-content: center;
+  }
+  
+  .grid-item{
+    background-color: rgb(255, 255, 255);
+    display:flex;
+    justify-content: center;
+    border: 1px solid rgb(85, 85, 85);
+  }
+  
+  .grid-item:hover{
+    background-color: rgb(244, 244, 244);
+    transition: .3s;
+  }
+  
+  input.botón{
+    background-color: rgb(2, 151, 35);
+    color: rgb(255, 255, 255);
+    font-size: 17px;
+    padding: 7px 13px;
+    border-radius: 3px;
+    text-transform: uppercase;
+    border:none;
+    cursor:pointer;
+    flex-wrap: wrap;
+  }
+  
+  input.botón:hover{
+    background: rgb(12, 66, 24);
+    transition: .5s;
+  }
+  
+  input.botón2{
+    background-color: rgb(253, 210, 50);
+    color: rgb(255, 255, 255);
+    font-size: 17px;
+    padding: 7px 13px;
+    border-radius: 3px;
+    text-transform: uppercase;
+    border:none;
+    cursor:pointer;
+    flex-wrap: wrap;
+  }
+  
+  input.botón2:hover{
+    background: rgb(255, 224, 113);
+    transition: .5s;
+  }
+  
+  /*FOOTER*/
+  
+  footer{
+    position: relative;
+    bottom:0;
+    left:0;
+    width:100%;
+    background-color: rgb(2, 151, 35);
+    color: rgb(255, 255, 255);
+    align-content: center;
+    text-align: center;
+    padding:10px;
+    margin-top: 40px;
+  }
+  
+  footer.footer-tienda{
+    background-color: rgb(253, 210, 50);
+  }
