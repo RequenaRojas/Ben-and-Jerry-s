@@ -1,11 +1,11 @@
 <%-- 
-    Document   : IniciarSesion
-    Created on : 9/06/2021, 01:01:17 PM
+    Document   : InicioAdministrador
+    Created on : 9/06/2021, 11:11:20 AM
     Author     : sofo9
 --%>
 
-<%@page import="Controlador.ActUsuario"%>
 <%@page import="Modelo.Usuario"%>
+<%@page import="Controlador.ActUsuario"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!--Validación de la sesión-->
 <%
@@ -28,13 +28,13 @@
 
 
 <!DOCTYPE html>
-  <head>
+<head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Registro de usuario</title>
+    <title>Benito y Gerardo</title>
     <link rel="stylesheet" href="../../css/estiloAdmin.css">
     <link rel="shortcut icon" href="https://www.drodd.com/images16/pastel-blue6.jpg">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"/>
   </head>
   <body>
     <header>
@@ -44,7 +44,7 @@
         </label>
         <a class="logo" href="../../index.html">Benito y Gerardo</a>
     <ul>
-        <li><a class="Header" href="InicioAdministrador.jsp">Inicio</a></li>
+        <li><a class="active" href="InicioAdministrador.jsp">Inicio</a></li>
         <% 
             if(sesionIniciada == false){
         %>
@@ -56,7 +56,7 @@
             if(sesionIniciada == true){
                 Usuario usu = ActUsuario.getUsuario(id_usuario);
         %>
-                <li class="Header">Bienvenido<br><%= usu.getNom_usuario()%></li>
+                <li>Bienvenido<br><%= usu.getNom_usuario()%></li>
         <% 
             }
         %>
@@ -65,40 +65,29 @@
     </ul>
     </header>
     <section class="contenedorPrincipal">
-        
-        <div class="div-contenido" style="text-align: center;">
-            <h2 style="text-align: center; ">Obtener una Cuenta de Administrador</h2>
+        <h2 style="text-align: center;">¡Bienvenido!</h2>
+        <p class="texto" style="text-align: center; margin-top:40px; margin-left: 40px; margin-right: 40px;">
+            Benito y Gerardo es una renombrada heladería internacional que ha hecho sonreir a generaciones.
+            <br><br>
+            Se parte de la comunidad de trabajadores de Benito y Gerardo.
             <br>
-            <p class="texto" style="text-align: center; margin-top:40px; margin-left: 40px; margin-right: 40px;">
-                Para obtener una cuenta de Administrador deberá leer Primero los términos y condiciones
-                <br>
-                <br>
-                <i>* Términos y Condiciones que nínguna persona lee porque es mucho texto *</i>
-                <br>
-                <br>
-                Con tan solo <b>inicie sesión en está sección</b>, podrá acceder a todas los permisos de un Administrador. 
-            </p>
-            
-            <br>
+        </p>
+        <h2 style="text-align: left; margin-left: 3.89rem;">¡Apoyanos!</h2>
+        <div class="div-contenido" style="text-align: center; ">
+            <a class="linkPromo" href="JSP/Admin/RegistrarProdu.jsp">
+            <div class="div-promoUno">
+                <p class="PromoUno" style="vertical-align: middle;">Registrar Productos</p>
+            </div>
+            </a>
+            <a class="linkPromo" href="Tienda.html">
+            <div class="div-promoDos">
+                <p class="PromoDos" style="vertical-align: middle;">Editar Productos</p>
+            </div>
+            </a>
+            <br><br><br>
+            <a class="link" href="Tienda.html">Ver todos los productos</a>
+            <br><br><br>
         </div>
-        
-        <!--Fomulario-->
-        <div class="div-form">
-            <form  name="formUsu"  action="../../DarAlta" method="post">  
-                <label class="nomCam">User:</label>
-                <br>
-                <input class="campo" type="text" name="user_usuario" pattern="^[a-zA-ZÀ-ÿ\s]{4,50}$" >
-                <br><br>
-                <label class="nomCam">Contraseña:</label>
-                <br>
-                <input class="campo" type="password" name="pass_usuario"  pattern="^[a-zA-ZÀ-ÿ\s]{4,50}$">
-                <br>
-                <br>
-                <input class="botón" type="submit" value="Dar de alta Mi Sesión">
-                <br><br>
-                <input class="botón" type="reset" value="Borrar Campos">
-            </form>
-        </div>  
     </section>
     <footer>
         <p>

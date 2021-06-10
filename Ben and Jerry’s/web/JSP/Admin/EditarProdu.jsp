@@ -61,44 +61,37 @@
             }
         %>
         <li><a class="Header" href="RegistrarProdu.jsp">Registrar Helado</a></li>
-        <li><a class="Header" href="EditarProdu.jsp">Editar Helado</a></li>
+        <li><a class="active" href="EditarProdu.jsp">Editar Helado</a></li>
     </ul>
     </header>
     <section class="contenedorPrincipal">
-        
-        <div class="div-contenido" style="text-align: center;">
-            <h2 style="text-align: center; ">Obtener una Cuenta de Administrador</h2>
-            <br>
-            <p class="texto" style="text-align: center; margin-top:40px; margin-left: 40px; margin-right: 40px;">
-                Para obtener una cuenta de Administrador deberá leer Primero los términos y condiciones
-                <br>
-                <br>
-                <i>* Términos y Condiciones que nínguna persona lee porque es mucho texto *</i>
-                <br>
-                <br>
-                Con tan solo <b>inicie sesión en está sección</b>, podrá acceder a todas los permisos de un Administrador. 
-            </p>
-            
-            <br>
-        </div>
-        
-        <!--Fomulario-->
         <div class="div-form">
-            <form  name="formUsu"  action="../../DarAlta" method="post">  
+            <form  name="formUsu" method="post" action="RegistrarAdmin" >  
+                <h2 style="text-align: left;">Por favor, ingrese sus datos:</h2>
+                <br><br>
                 <label class="nomCam">User:</label>
                 <br>
-                <input class="campo" type="text" name="user_usuario" pattern="^[a-zA-ZÀ-ÿ\s]{4,50}$" >
+                <input class="campo" type="text" name="user_usuario" pattern="^(?=.{1,10}$)[a-zA-ZáéíóúüñÁÉÍÓÚÑ]+(?:[\s][a-zA-ZáéíóúüñÁÉÍÓÚÑ]+)*$" >
                 <br><br>
                 <label class="nomCam">Contraseña:</label>
                 <br>
-                <input class="campo" type="password" name="pass_usuario"  pattern="^[a-zA-ZÀ-ÿ\s]{4,50}$">
+                <input class="campo" type="password" name="pass_usuario"  pattern="^(?=.{1,10}$)[a-zA-ZáéíóúüñÁÉÍÓÚÑ]+(?:[\s][a-zA-ZáéíóúüñÁÉÍÓÚÑ]+)*$">
                 <br>
                 <br>
-                <input class="botón" type="submit" value="Dar de alta Mi Sesión">
+                <input class="botón" type="submit" value="Iniciar Sesión">
                 <br><br>
-                <input class="botón" type="reset" value="Borrar Campos">
+                <input class="botón" type="reset" value="Borrar datos de registro">
             </form>
-        </div>  
+        </div>   
+        <div class="div-contenido" style="text-align: center;">
+            
+            <br>
+            <p class="texto" style="text-align: center; margin-top:40px; margin-left: 40px; margin-right: 40px;">
+                ¿No tienes cuenta de Administrador?
+            </p>
+            <a class="link" href="RegistrarAdmin.jsp">¡Unetenos!</a>
+            <br><br><br>
+        </div>
     </section>
     <footer>
         <p>
