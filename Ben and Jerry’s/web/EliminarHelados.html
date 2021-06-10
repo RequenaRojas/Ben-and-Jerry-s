@@ -2,7 +2,7 @@
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Registro administrador</title>
+        <title>Eliminar helado</title>
         <link rel="stylesheet" href="./css/estilo.css">
         <link rel="shortcut icon" href="https://www.drodd.com/images16/pastel-blue6.jpg">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"/>
@@ -22,15 +22,12 @@
         </ul>
         </header>
         <section class="contenedorPrincipal">
-            <form  onsubmit="" name="formElimUsu" method="post" action="RegistrarAdmin.jsp">  
+            <form  onsubmit="" name="formElimUsu" method="post" action="EliminarHelados.jsp">  
                 <br><br>
-                <h2 style="text-align: left;">Por favor, ingrese los siguientes datos de administrador:</h2>
+                <h2 style="text-align: left;">Ingrese el ID del helado para eliminarlo:</h2>
                 <br><br>
-                <label>Correo: </label>
-                <input class="campo" type="text" name="corr_usu" pattern="\d+" >
-                <br><br>
-                <label>Contraseña: </label>
-                <input class="campo" type="text" name="cont_usu"  >
+                <label>ID: </label>
+                <input class="campo" type="text" name="id_hela" pattern="\d+" >
                 <br><br>
                 <input class="botón" type="submit" value="Enviar">
                 <br><br><br><br><br><br><br><br><br><br>

@@ -1,18 +1,29 @@
-<%-- 
-    Document   : Registro
-    Created on : 30/04/2021, 10:55:06 PM
-    Author     : sofo9
---%>
-
-
-<%@page contentType="text/html" pageEncoding="UTF-8"  language="java" import="java.sql.*,java.util.Date, java.util.* , Clases.*, java.text.*" %>
+<%@page import="Clases.Usuario"%>
+<%@page contentType="text/html" pageEncoding="UTF-8"  language="java" import="java.sql.*,java.util.Date, java.util.* , Clases.ConexionSQL, java.text.*" %>
 <!DOCTYPE html>
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Registro Usuario</title> 
+        <title>Registro de usuario</title> 
+        <link rel="stylesheet" href="./css/estilo.css">
+        <link rel="shortcut icon" href="https://www.drodd.com/images16/pastel-blue6.jpg">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"/>
 </head>
     <body>
+        <header>
+            <input type="checkbox" id="check">
+            <label for="check" class="checkbtn">
+                <i class="fas fa-bars"></i>
+            </label>
+            <a class="logo" href="index.html">Benito y Gerardo</a>
+        <ul>
+            <li><a class="Header" href="index.html">Inicio</a></li>
+            <li><a class="active" href="Registro.html">Regístrate</a></li>
+            <li><a class="Header" href="Usuario.html">Usuario</a></li>
+            <li><a class="Header" href="Tienda.html">Tienda</a></li>
+        </ul>
+        </header>
+    <section class="contenedorPrincipal">
 <%  //Variables de conexion
     Connection con = null;
     Statement set = null;
@@ -58,43 +69,32 @@
             Usuario usu = new Usuario();
             
             usu.Usuario(nom_usu, apelPat_usu, apelMat_usu, fechNaci_usu, domi_usu, telePart, teleCelu);
-
+            sql.agregarUsuarioBD(usu);
             
-            
-            if(sql.buscarIdUsuarioBD(nom_usu, apelPat_usu, apelMat_usu) != 0){
+            if(sql.buscarIdUsuarioBD(nom_usu, apelPat_usu, apelMat_usu)== 0){
 %>
-                <h1>Ya existe este Usuario con Nombre, Apellidos Paterno y Materno que acabás de escribir</h1>
+                <h2 style="text-align: center;">Ya existe un usuario con el nombre, apellido paterno y materno que acabas de escribir</h2>
 
 
 <%
               
                 
             }else{
-          
-                sql.agregarUsuarioBD(usu);
 %>
-                <h1>Usuario Registrado con exito awa</h1>
-
+                <h2 style="text-align: center;">Usuario registrado con éxito</h2>
                 <br>
                 <br>
-                <label>Nombre: <%=usu.getNom()%> <%=usu.getApelPat_usu()%> <%=usu.getApelMat_usu()%> </label>
-                <br>
-                <br>
-                <label>Fecha De Nacimiento: <%=usu.getfechNaci_usu().toString()%></label>
-                <br>
-                <br>
-                <label>Domicilio: <%=usu.getDomi_usu()%></label>
-                <br>
-                <br>
-                <label>Telefono Partícular: <%=usu.getTelePart()%></label>
-                <br>
-                <br>
-                <label>Telefono Celular: <%=usu.getTeleCelu()%></label>
-                <br>
-                <br>
-                <label>Tu id de Usuario: <%= sql.buscarIdUsuarioBD(usu.getNom(), usu.getApelPat_usu(), usu.getApelMat_usu()) %></label>
-
-
+                <p class="texto" style="text-align: center; margin-top:40px; margin-left: 40px; margin-right: 40px;">
+                    Nombre: <%=usu.getNom()%> <%=usu.getApelPat_usu()%> <%=usu.getApelMat_usu()%>
+                <br><br>
+                    Fecha de nacimiento: <%=usu.getfechNaci_usu().toString()%>
+                <br><br>
+                    Domicilio: <%=usu.getDomi_usu()%>
+                <br><br>
+                    Telefono particular: <%=usu.getTelePart()%>
+                <br><br>
+                    Teléfono celular: <%=usu.getTeleCelu()%>
+                </p>
 
     <%
             }
@@ -104,11 +104,35 @@
                 System.out.println(e.getMessage());
                 System.out.println(e.getStackTrace());
 %>
-            <h1>No se ha podido registrar el Usuario</h1>
+            <h2 style="text-align: center;">No se ha podido registrar el Usuario</h2>
 <%
     }
     
     
+    
+    }catch(Exception e){
+        System.out.println("Error al conectar con la BD");
+        System.out.println(e.getMessage());
+        System.out.println(e.getStackTrace());
+%>
+        <h2 style="text-align: center;">Hubo un error al Conectarse con la BD</h2>
+<%
+    }    
+%>        
+    <br><br><br>
+    <a class="link" href="index.html" style="text-align: center;">Regresar a inicio</a>
+    </section>
+    <footer>
+        <p>
+        <br>
+            Integrantes del equipo:
+        <br><br>
+            - Fernández García Gael - Morales de los Santos Jaime Emmanuel - Requena Rojas Moisés Sófocles -
+        <br><br>
+        </p>
+    </footer>
+    </body>
+</html>
 
     
     
