@@ -33,7 +33,7 @@
         <label for="check" class="checkbtn">
             <i class="fas fa-bars"></i>
         </label>
-        <a class="logo" href="InicioAdministrador.jsp">Benito y Gerardo</a>
+        <a class="logo" href="index.html">Benito y Gerardo</a>
     <ul class="ul-admin">
         <li><a class="active3" href="InicioAdministrador.jsp">Inicio</a></li>
         <% 
@@ -47,7 +47,7 @@
             if(sesionIniciada == true){
                 Usuario usu = ActUsuario.getUsuario(id_usuario);
         %>
-                <li>Bienvenido<br><%= usu.getNom_usuario()%></li>
+                <li>Bienvenido <%= usu.getNom_usuario()%></li>
         <% 
             }
         %>
