@@ -27,8 +27,7 @@ public class Usuario {
     private Date fechNaci_usurio;
     private int privilegio;
 
-    //Necesito que también regrese los objetos domicilio y tarjeta ya listos
-     public Usuario verificarUsuario(String user, String pass) throws ClassNotFoundException, SQLException, ServletException{
+     public static Usuario verificarUsuario(String user, String pass) throws ClassNotFoundException, SQLException, ServletException{
         Usuario u = null;
         Connection con = null;
         PreparedStatement ps = null;
@@ -177,16 +176,4 @@ public class Usuario {
     public void setPass_usuario(String pass_usuario) {
         this.pass_usuario = pass_usuario;
     }
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
 }
