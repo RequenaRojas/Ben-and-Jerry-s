@@ -36,7 +36,7 @@
         <label for="check" class="checkbtn">
             <i class="fas fa-bars"></i>
         </label>
-        <a class="logo" href="InicioAdministrador.jsp">Benito y Gerardo</a>
+        <a class="logo" href="index.html">Benito y Gerardo</a>
     <ul>
         <li><a class="Header3" href="InicioAdministrador.jsp">Inicio</a></li>
         <% 
