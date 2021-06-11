@@ -1,7 +1,7 @@
 <%@page import="Modelo.Usuario"%>
 <%@page import="Controlador.ActUsuario"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-<!--Validación de la sesión-->
+<!--Validar sesión-->
 <%
     HttpSession sesion = request.getSession();
     boolean sesionIniciada;
