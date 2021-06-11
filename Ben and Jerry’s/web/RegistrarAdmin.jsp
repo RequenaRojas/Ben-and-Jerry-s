@@ -1,7 +1,6 @@
 <%@page import="Controlador.ActUsuario"%>
 <%@page import="Modelo.Usuario"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-<!--Validación de la sesión-->
 <%
     HttpSession sesion = request.getSession();
     boolean sesionIniciada;
@@ -19,9 +18,6 @@
     }
 %>
 
-
-
-<!DOCTYPE html>
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">

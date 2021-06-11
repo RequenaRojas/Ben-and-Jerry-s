@@ -1,7 +1,6 @@
 <%@page import="Controlador.ActUsuario"%>
 <%@page import="Modelo.Usuario"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-<!--Validación de la sesión-->
 <%
     HttpSession sesion = request.getSession();
     boolean sesionIniciada;
@@ -19,13 +18,10 @@
     }
 %>
 
-
-
-<!DOCTYPE html>
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Registro de usuario</title>
+    <title>Benito y Gerardo</title>
     <link rel="stylesheet" href="./css/estilo.css">
     <link rel="shortcut icon" href="https://th.bing.com/th/id/OIP.KadbGAD98FqNXDfQzQKPYQHaHa?pid=ImgDet&rs=1">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
