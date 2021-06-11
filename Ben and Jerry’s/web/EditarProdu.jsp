@@ -38,7 +38,7 @@
         </label>
         <a class="logo" href="index.html">Benito y Gerardo</a>
     <ul>
-        <li><a class="Heade3r" href="InicioAdministrador.jsp">Inicio</a></li>
+        <li><a class="Header3" href="InicioAdministrador.jsp">Inicio</a></li>
         <% 
             if(sesionIniciada == false){
         %>
