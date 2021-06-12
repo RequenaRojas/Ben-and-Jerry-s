@@ -1,26 +1,27 @@
 <%@page import="Clases.Usuario"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"  language="java" import="java.sql.*,java.util.Date, java.util.* , Clases.ConexionSQL, java.text.*" %>
 <!DOCTYPE html>
-<html>
+<html lang="en" dir="ltr">
     <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Registro de usuario</title> 
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Benito y Gerardo</title>
         <link rel="stylesheet" href="./css/estilo.css">
-        <link rel="shortcut icon" href="https://www.drodd.com/images16/pastel-blue6.jpg">
+        <link rel="shortcut icon" href="https://th.bing.com/th/id/R07899a6484e0fdc0bbf943d221e56d47?rik=r7b41rRSj1pkJQ&pid=ImgRaw">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"/>
-</head>
-    <body>
-        <header>
+      </head>
+      <body>
+        <header class="header-tienda">
             <input type="checkbox" id="check">
             <label for="check" class="checkbtn">
                 <i class="fas fa-bars"></i>
             </label>
-            <a class="logo" href="index.html">Benito y Gerardo</a>
-        <ul>
-            <li><a class="Header" href="index.html">Inicio</a></li>
-            <li><a class="active" href="Registro.html">Regístrate</a></li>
-            <li><a class="Header" href="Usuario.html">Usuario</a></li>
-            <li><a class="Header" href="Tienda.html">Tienda</a></li>
+            <a class="logo" href="Tienda.html">Benito y Gerardo</a>
+        <ul class="ul-tienda">
+            <li><a class="Header2" href="Tienda.html">Inicio</a></li>
+            <li><a class="Header2" href="Carrito.html">Carrito</a></li>
+            <li><a class="active2" href="UsuarioTienda.html">Usuario</a></li>
+            <li><a class="Header2" href="index.html">Regresar</a></li>
         </ul>
         </header>
     <section class="contenedorPrincipal">
@@ -73,7 +74,7 @@
             
             if(sql.buscarIdUsuarioBD(nom_usu, apelPat_usu, apelMat_usu)== 0){
 %>
-                <h2 style="text-align: center;">Ya existe un usuario con el nombre, apellido paterno y materno que acabas de escribir</h2>
+                <h2 class="h2-tienda" style="text-align: center;">Ya existe un usuario con el nombre, apellido paterno y materno que acabas de escribir</h2>
 
 
 <%
@@ -81,7 +82,7 @@
                 
             }else{
 %>
-                <h2 style="text-align: center;">Usuario registrado con éxito</h2>
+                <h2 class="h2-tienda" style="text-align: center;">Usuario registrado con éxito</h2>
                 <br>
                 <br>
                 <p class="texto" style="text-align: center; margin-top:40px; margin-left: 40px; margin-right: 40px;">
@@ -104,26 +105,25 @@
                 System.out.println(e.getMessage());
                 System.out.println(e.getStackTrace());
 %>
-            <h2 style="text-align: center;">No se ha podido registrar el Usuario</h2>
+            <h2 class="h2-tienda" style="text-align: center;">No se ha podido registrar el Usuario</h2>
 <%
     }
     
     
     
-
     }catch(Exception e){
         System.out.println("Error al conectar con la BD");
         System.out.println(e.getMessage());
         System.out.println(e.getStackTrace());
 %>
-        <h2 style="text-align: center;">Hubo un error al Conectarse con la BD</h2>
+        <h2 class="h2-tienda" style="text-align: center;">Hubo un error al Conectarse con la BD</h2>
 <%
     }    
 %>        
     <br><br><br>
-    <a class="link" href="index.html" style="text-align: center;">Regresar a inicio</a>
+    <a class="link2" href="Tienda.html" style="text-align: center;">Regresar a la tienda</a>
     </section>
-    <footer>
+    <footer class="footer-tienda">
         <p>
         <br>
             Integrantes del equipo:
@@ -134,3 +134,23 @@
     </footer>
     </body>
 </html>
+
+    
+    
+    }catch(Exception e){
+        System.out.println("Error al conectar con la BD");
+        System.out.println(e.getMessage());
+        System.out.println(e.getStackTrace());
+%>
+        <h2 class="h2-tienda" >Hubo un error al Conectarse con la BD</h2>
+<%
+    }    
+%>        
+    </body>
+</html>
+
+<%try{
+        con.close();
+    }catch(Exception e){
+        super.destroy();
+    } %>

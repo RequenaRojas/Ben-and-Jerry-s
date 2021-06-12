@@ -1,30 +1,30 @@
 <html lang="en" dir="ltr">
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Registro de usuario</title>
-    <link rel="stylesheet" href="./css/estilo.css">
-    <link rel="shortcut icon" href="https://www.drodd.com/images16/pastel-blue6.jpg">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
-  </head>
-  <body>
-    <header>
-        <input type="checkbox" id="check">
-        <label for="check" class="checkbtn">
-            <i class="fas fa-bars"></i>
-        </label>
-        <a class="logo" href="index.html">Benito y Gerardo</a>
-    <ul>
-        <li><a class="Header" href="index.html">Inicio</a></li>
-        <li><a class="active" href="Registro.html">Regístrate</a></li>
-        <li><a class="Header" href="Usuario.html">Usuario</a></li>
-        <li><a class="Header" href="Tienda.html">Tienda</a></li>
-    </ul>
-    </header>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Benito y Gerardo</title>
+        <link rel="stylesheet" href="./css/estilo.css">
+        <link rel="shortcut icon" href="https://th.bing.com/th/id/R07899a6484e0fdc0bbf943d221e56d47?rik=r7b41rRSj1pkJQ&pid=ImgRaw">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"/>
+      </head>
+      <body>
+        <header class="header-tienda">
+            <input type="checkbox" id="check">
+            <label for="check" class="checkbtn">
+                <i class="fas fa-bars"></i>
+            </label>
+            <a class="logo" href="Tienda.html">Benito y Gerardo</a>
+        <ul class="ul-tienda">
+            <li><a class="Header2" href="Tienda.html">Inicio</a></li>
+            <li><a class="Header2" href="Carrito.html">Carrito</a></li>
+            <li><a class="active2" href="UsuarioTienda.html">Usuario</a></li>
+            <li><a class="Header2" href="index.html">Regresar</a></li>
+        </ul>
+        </header>
     <section class="contenedorPrincipal">
         <div class="div-form">
             <form  onsubmit="" name="formUsu" method="post" action="Registro.jsp" >  
-                <h2 style="text-align: left;">Por favor, ingrese sus datos:</h2>
+                <h2 class="h2-tienda" style="text-align: left;">Por favor, ingrese sus datos:</h2>
                 <br><br>
                 <label class="nomCam">Nombre:</label>
                 <br>
@@ -55,13 +55,13 @@
                 <input class="campo" type="tel" name="telaPart"  >
                 <br>
                 <br>
-                <input class="botón" type="submit" value="Enviar datos de registro">
+                <input class="botón2" type="submit" value="Enviar datos de registro">
                 <br><br>
-                <input class="botón" type="reset" value="Borrar datos de registro">
+                <input class="botón2" type="reset" value="Borrar datos de registro">
             </form>
         </div>   
     </section>
-    <footer>
+    <footer class="footer-tienda">
         <p>
         <br>
             Integrantes del equipo:
